@@ -1,0 +1,30 @@
+<idea-plugin require-restart="true">
+  <id>verifytests-rider</id>
+  <name>VerifyTests Support</name>
+  <version>_PLACEHOLDER_</version>
+  <vendor url="https://github.com/VerifyTests/Verify">Simon Cropp, Matthias Koch</vendor>
+  <idea-version since-build="_PLACEHOLDER_" until-build="_PLACEHOLDER_" />
+  <depends>com.intellij.modules.rider</depends>
+
+  <description>
+<![CDATA[
+<p>Verify is a snapshot tool that simplifies the assertion of complex data models and documents.</p>
+<p>Verify is called on the test result during the assertion phase. It serializes that result and stores it in a file that matches the test name. On the next test execution, the result is again serialized and compared to the existing file. The test will fail if the two snapshots do not match: either the change is unexpected, or the reference snapshot needs to be updated to the new result.</p>
+]]>
+  </description>
+
+  <actions>
+    <action id="VerifyTestsAcceptReceived"
+            class="com.jetbrains.rider.plugins.verifytests.VerifyTestsAcceptReceivedAction"
+            text="[VerifyTests] Accept Received" description="Accepts the received snapshot" />
+
+    <!-- https://plugins.jetbrains.com/docs/intellij/working-with-custom-actions.html#setting-registration-attributes-manually -->
+    <!-- https://upsource.jetbrains.com/dotnet-products/file/2e0079b2d06ee5b757178c603216742a15d95c9b/Rider/Frontend/rider/resources/META-INF/RiderUnitTesting.xml?nav=63052:63701:focused&line=789&preview=false -->
+    <group id="Rider.UnitTesting.VerifyTests">
+      <reference id="VerifyTestsAcceptReceived" />
+      <separator />
+      <add-to-group group-id="Rider.UnitTesting.SessionPopup" relative-to-action="RiderUnitTestOpenTestOutputInEditorAction" anchor="before"/>
+    </group>
+  </actions>
+
+</idea-plugin>
