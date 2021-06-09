@@ -15,13 +15,19 @@
 
   <actions>
     <action id="VerifyTestsAcceptReceived"
-            class="com.jetbrains.rider.plugins.verifytests.VerifyTestsAcceptReceivedAction"
-            text="[VerifyTests] Accept Received" description="Accepts the received snapshot" />
+            class="com.jetbrains.rider.plugins.verifytests.VerifyTestsAcceptAction"
+            icon="VerifyTestsIcons.AcceptIcon"
+            text="Accept Received" description="Accepts the received snapshot" />
+    <action id="VerifyTestsCompare"
+            class="com.jetbrains.rider.plugins.verifytests.VerifyTestsCompareAction"
+            icon="VerifyTestsIcons.CompareIcon"
+            text="Compare Received &amp; Verified" description="Compare" />
 
     <!-- https://plugins.jetbrains.com/docs/intellij/working-with-custom-actions.html#setting-registration-attributes-manually -->
     <!-- https://upsource.jetbrains.com/dotnet-products/file/2e0079b2d06ee5b757178c603216742a15d95c9b/Rider/Frontend/rider/resources/META-INF/RiderUnitTesting.xml?nav=63052:63701:focused&line=789&preview=false -->
     <group id="Rider.UnitTesting.VerifyTests">
       <reference id="VerifyTestsAcceptReceived" />
+      <reference id="VerifyTestsCompare" />
       <separator />
       <add-to-group group-id="Rider.UnitTesting.SessionPopup" relative-to-action="RiderUnitTestOpenTestOutputInEditorAction" anchor="before"/>
     </group>

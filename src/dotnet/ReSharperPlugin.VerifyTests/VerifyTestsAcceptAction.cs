@@ -31,9 +31,9 @@ using JetBrains.ReSharper.UnitTestFramework.Session.Actions;
 
 namespace ReSharperPlugin.VerifyTests
 {
-    [Action("UnitTestSession.VerifyTestsAcceptReceived", "[VerifyTests] Accept Received",
+    [Action("UnitTestSession.VerifyTestsAccept", "[VerifyTests] Accept Received",
         Icon = typeof(VerifyTestsThemedIcons.VerifyTests), Id = 222011)]
-    public class VerifyTestsAcceptReceivedAction :
+    public class VerifyTestsAcceptAction :
 #if RESHARPER
         IInsertBefore<UnitTestSessionContextMenuActionGroup, UnitTestSessionAppendChildren>,
 #endif
@@ -89,8 +89,6 @@ namespace ReSharperPlugin.VerifyTests
                     : (exceptionLines[3].TrimFromStart("Received: "), exceptionLines[4].TrimFromStart("Verified: "));
                 var receivedFile = (projectFile.Location.Directory / receivedFileName).FullPath;
                 var verifiedFile = (projectFile.Location.Directory / verifiedFileName).FullPath;
-
-
 
                 if (File.Exists(verifiedFile))
                     File.Delete(verifiedFile);
