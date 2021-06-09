@@ -20,6 +20,7 @@ using JetBrains.ReSharper.UnitTestFramework.Common;
 using JetBrains.ReSharper.UnitTestFramework.Criteria;
 using JetBrains.ReSharper.UnitTestFramework.Resources;
 using JetBrains.UI.Icons;
+using JetBrains.UI.ThemedIcons;
 using JetBrains.Util;
 using JetBrains.Util.Icons;
 #if RESHARPER
@@ -31,7 +32,7 @@ using JetBrains.ReSharper.UnitTestFramework.Session.Actions;
 namespace ReSharperPlugin.VerifyTests
 {
     [Action("UnitTestSession.VerifyTestsAcceptReceived", "[VerifyTests] Accept Received",
-        Icon = typeof(UnitTestingThemedIcons.RunAll), Id = 222011)]
+        Icon = typeof(VerifyTestsThemedIcons.VerifyTests), Id = 222011)]
     public class VerifyTestsAcceptReceivedAction :
 #if RESHARPER
         IInsertBefore<UnitTestSessionContextMenuActionGroup, UnitTestSessionAppendChildren>,
