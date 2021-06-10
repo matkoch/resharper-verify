@@ -20,22 +20,32 @@ import java.io.File
 import javax.swing.Icon
 
 class VerifyTestsCompareAction :
-    AnAction(VerifyTestsIcons.CompareIcon)
-{
-    override fun actionPerformed(p0: AnActionEvent) {
-        val receivedFile = File("/Users/matt/RiderProjects/ClassLibrary2/ClassLibrary2/Class1.Test.received.txt")
-        val verifiedFile = File("/Users/matt/RiderProjects/ClassLibrary2/ClassLibrary2/Class1.Test.verified.txt")
-
-        val receivedVirtualFile = VfsUtil.findFileByIoFile(receivedFile, true)!!
-        val verifiedVirtualFile = VfsUtil.findFileByIoFile(verifiedFile, true)!!
-
-        val receivedContent = DiffContentFactory.getInstance().create(p0.project, receivedVirtualFile)
-        val verifiedContent = DiffContentFactory.getInstance().create(p0.project, verifiedVirtualFile)
-
-        receivedContent.putUserData(DiffUserDataKeys.FORCE_READ_ONLY, true)
-
-        val request = SimpleDiffRequest("Test Name", receivedContent, verifiedContent, "Received", "Verified");
-        DiffManager.getInstance().showDiff(p0.project, request);
-    }
+    RiderUnitTestAnActionBase("UnitTestSession.VerifyTestsCompare") {
+    override val target
+        get() = RiderUnitTestTarget(
+            RiderUnitTestTargetOperation.ElementManipulation,
+            RiderUnitTestTargetExecutor.None,
+            RiderUnitTestTargetScope.SelectedElements
+        )
 
 }
+//class VerifyTestsCompareAction :
+//    AnAction(VerifyTestsIcons.CompareIcon)
+//{
+//    override fun actionPerformed(p0: AnActionEvent) {
+//        val receivedFile = File("/Users/matt/RiderProjects/ClassLibrary2/ClassLibrary2/Class1.Test.received.txt")
+//        val verifiedFile = File("/Users/matt/RiderProjects/ClassLibrary2/ClassLibrary2/Class1.Test.verified.txt")
+//
+//        val receivedVirtualFile = VfsUtil.findFileByIoFile(receivedFile, true)!!
+//        val verifiedVirtualFile = VfsUtil.findFileByIoFile(verifiedFile, true)!!
+//
+//        val receivedContent = DiffContentFactory.getInstance().create(p0.project, receivedVirtualFile)
+//        val verifiedContent = DiffContentFactory.getInstance().create(p0.project, verifiedVirtualFile)
+//
+//        receivedContent.putUserData(DiffUserDataKeys.FORCE_READ_ONLY, true)
+//
+//        val request = SimpleDiffRequest("Test Name", receivedContent, verifiedContent, "Received", "Verified");
+//        DiffManager.getInstance().showDiff(p0.project, request);
+//    }
+//
+//}

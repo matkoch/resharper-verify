@@ -1,28 +1,20 @@
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using JetBrains.Application.DataContext;
-using JetBrains.Application.Icons;
-using JetBrains.Application.Icons.CompiledIconsCs;
 using JetBrains.Application.UI.Actions;
 using JetBrains.Application.UI.ActionsRevised.Menu;
 using JetBrains.Application.UI.ActionSystem.ActionsRevised.Menu;
-using JetBrains.Application.UI.Icons.CompiledIcons;
-using JetBrains.Application.UI.Icons.ComposedIcons;
 using JetBrains.Diagnostics;
 using JetBrains.DocumentModel.DataContext;
-using JetBrains.IDE.UI.Extensions;
 using JetBrains.ReSharper.Feature.Services.Actions;
 using JetBrains.ReSharper.Psi.Files;
-using JetBrains.ReSharper.Resources.Shell;
 using JetBrains.ReSharper.UnitTestFramework;
 using JetBrains.ReSharper.UnitTestFramework.Common;
-using JetBrains.ReSharper.UnitTestFramework.Criteria;
-using JetBrains.ReSharper.UnitTestFramework.Resources;
-using JetBrains.UI.Icons;
-using JetBrains.UI.ThemedIcons;
 using JetBrains.Util;
-using JetBrains.Util.Icons;
+#if RIDER
+using JetBrains.ProjectModel;
+using JetBrains.ReSharper.Host.Features;
+#endif
 #if RESHARPER
 using JetBrains.ReSharper.UnitTestExplorer.Session.Actions;
 using JetBrains.ReSharper.UnitTestFramework.Session.Actions;
@@ -30,9 +22,9 @@ using JetBrains.ReSharper.UnitTestFramework.Session.Actions;
 
 namespace ReSharperPlugin.VerifyTests
 {
-    [Action("UnitTestSession.VerifyTestsAccept", "Accept Received",
+    [Action("UnitTestSession.VerifyTestsCompare", "Compare Received & Verified",
         Icon = typeof(VerifyTestsThemedIcons.VerifyTests), Id = 222011)]
-    public class VerifyTestsAcceptAction :
+    public class VerifyTestsCompareAction :
 #if RESHARPER
         IInsertBefore<UnitTestSessionContextMenuActionGroup, UnitTestSessionAppendChildren>,
 #endif
@@ -51,7 +43,8 @@ namespace ReSharperPlugin.VerifyTests
             var resultManager = context.GetComponent<IUnitTestResultManager>();
             var criterionEvaluator = context.GetComponent<IUnitTestElementCriterionEvaluator>();
             var session = context.GetData(UnitTestDataConstants.UnitTestSession.CURRENT);
-            var elements = context.GetData(UnitTestDataConstants.UnitTestElements.SELECTED)?.Evaluate(criterionEvaluator).ToList() ??
+            var elements = context.GetData(UnitTestDataConstants.UnitTestElements.SELECTED)
+                               ?.Evaluate(criterionEvaluator).ToList() ??
                            new List<IUnitTestElement>();
 
             foreach (var element in elements)
@@ -71,7 +64,8 @@ namespace ReSharperPlugin.VerifyTests
             var resultManager = context.GetComponent<IUnitTestResultManager>();
             var criterionEvaluator = context.GetComponent<IUnitTestElementCriterionEvaluator>();
             var session = context.GetData(UnitTestDataConstants.UnitTestSession.CURRENT);
-            var elements = context.GetData(UnitTestDataConstants.UnitTestElements.SELECTED)?.Evaluate(criterionEvaluator).ToList() ??
+            var elements = context.GetData(UnitTestDataConstants.UnitTestElements.SELECTED)
+                               ?.Evaluate(criterionEvaluator).ToList() ??
                            new List<IUnitTestElement>();
 
             foreach (var element in elements)
@@ -89,11 +83,10 @@ namespace ReSharperPlugin.VerifyTests
                 var receivedFile = (projectFile.Location.Directory / receivedFileName).FullPath;
                 var verifiedFile = (projectFile.Location.Directory / verifiedFileName).FullPath;
 
-                if (File.Exists(verifiedFile))
-                    File.Delete(verifiedFile);
-                File.Move(receivedFile, verifiedFile);
-
-                resultManager.MarkOutdated(element);
+#if RIDER
+                var verifyTestsModel = context.GetComponent<ISolution>().GetProtocolSolution().GetVerifyTestsModel();
+                verifyTestsModel.Compare.Fire(new CompareData(element.GetPresentation(element.Parent), receivedFile, verifiedFile));
+#endif
             }
         }
 
