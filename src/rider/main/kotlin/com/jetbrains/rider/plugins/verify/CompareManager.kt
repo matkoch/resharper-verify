@@ -1,4 +1,4 @@
-package com.jetbrains.rider.plugins.verifytests
+package com.jetbrains.rider.plugins.verify
 
 import com.intellij.diff.DiffContentFactory
 import com.intellij.diff.DiffManager

@@ -1,5 +1,5 @@
 @file:Suppress("EXPERIMENTAL_API_USAGE","EXPERIMENTAL_UNSIGNED_LITERALS","PackageDirectoryMismatch","UnusedImport","unused","LocalVariableName","CanBeVal","PropertyName","EnumEntryName","ClassName","ObjectPropertyName","UnnecessaryVariable","SpellCheckingInspection")
-package com.jetbrains.rider.plugins.verifytests
+package com.jetbrains.rider.plugins.verify
 
 import com.jetbrains.rd.framework.*
 import com.jetbrains.rd.framework.base.*
@@ -14,9 +14,9 @@ import kotlin.reflect.KClass
 
 
 /**
- * #### Generated from [VerifyTestsModel.kt:10]
+ * #### Generated from [VerifyModel.kt:10]
  */
-class VerifyTestsModel private constructor(
+class VerifyModel private constructor(
     private val _compare: RdSignal<CompareData>
 ) : RdExtBase() {
     //companion
@@ -33,8 +33,8 @@ class VerifyTestsModel private constructor(
         const val serializationHash = -2472762287443495641L
         
     }
-    override val serializersOwner: ISerializersOwner get() = VerifyTestsModel
-    override val serializationHash: Long get() = VerifyTestsModel.serializationHash
+    override val serializersOwner: ISerializersOwner get() = VerifyModel
+    override val serializationHash: Long get() = VerifyModel.serializationHash
     
     //fields
     val compare: ISignal<CompareData> get() = _compare
@@ -54,26 +54,26 @@ class VerifyTestsModel private constructor(
     //hash code trait
     //pretty print
     override fun print(printer: PrettyPrinter)  {
-        printer.println("VerifyTestsModel (")
+        printer.println("VerifyModel (")
         printer.indent {
             print("compare = "); _compare.print(printer); println()
         }
         printer.print(")")
     }
     //deepClone
-    override fun deepClone(): VerifyTestsModel   {
-        return VerifyTestsModel(
+    override fun deepClone(): VerifyModel   {
+        return VerifyModel(
             _compare.deepClonePolymorphic()
         )
     }
     //contexts
 }
-val com.jetbrains.rd.ide.model.Solution.verifyTestsModel get() = getOrCreateExtension("verifyTestsModel", ::VerifyTestsModel)
+val com.jetbrains.rd.ide.model.Solution.verifyTestsModel get() = getOrCreateExtension("verifyTestsModel", ::VerifyModel)
 
 
 
 /**
- * #### Generated from [VerifyTestsModel.kt:15]
+ * #### Generated from [VerifyModel.kt:15]
  */
 data class CompareData (
     val testName: String,

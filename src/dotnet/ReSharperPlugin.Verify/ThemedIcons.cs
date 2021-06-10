@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::System.Windows.Markup.XmlnsDefinitionAttribute("urn:shemas-jetbrains-com:ui-application-icons-verify-tests-themed-icons", "ReSharperPlugin.VerifyTests")]
+[assembly: global::System.Windows.Markup.XmlnsDefinitionAttribute("urn:shemas-jetbrains-com:ui-application-icons-verify-tests-themed-icons", "ReSharperPlugin.Verify")]
 
-namespace ReSharperPlugin.VerifyTests
+namespace ReSharperPlugin.Verify
 {
 	/// <summary>
 	///	<para>
@@ -23,17 +23,17 @@ namespace ReSharperPlugin.VerifyTests
 	///	<para>It has two primary goals: load the icons of this assembly to be registered with <see cref="JetBrains.Application.Icons.IThemedIconManager"></see> so that they were WPF-accessible and theme-sensitive; and emit early-bound accessors for referencing icons in codebehind in a compile-time-validated manner.</para>
 	///	<h1>XAML</h1>
 	///	<para>For performance reasons, the icons are not individually exposed with application resources. There is a custom markup extension to bind an image source in markup.</para>
-	///	<para>To use an icon from XAML, set an <see cref="System.Windows.Media.ImageSource"></see> property to the <see cref="System.CodeDom.CodeTypeReference"></see> markup extension, which takes an icon identifier class (nested in <see cref="VerifyTestsThemedIcons"></see> class) as a parameter.</para>
+	///	<para>To use an icon from XAML, set an <see cref="System.Windows.Media.ImageSource"></see> property to the <see cref="System.CodeDom.CodeTypeReference"></see> markup extension, which takes an icon identifier class (nested in <see cref="VerifyThemedIcons"></see> class) as a parameter.</para>
 	///	<para>Example:</para>
 	///	<code>&lt;Image Source="{icons:ThemedIcon myres:QezegezThemedIconsThemedIcons+Trinity}" /&gt;</code>
 	///	<h1>Attributes</h1>
 	///	<para>Sometimes you have to reference an icon from a type attriute when you're defining objects in code. Typical examples are Options pages and Tool Windows.</para>
-	///	<para>To avoid the use of string IDs which are not validated very well, we've emitted identifier classes to be used with <c>typeof()</c> expression, one per each icon. Use the attribute overload which takes a <see cref="System.Type"></see> for an image, and choose your icon class from nested classes in the <see cref="VerifyTestsThemedIcons"></see> class.</para>
+	///	<para>To avoid the use of string IDs which are not validated very well, we've emitted identifier classes to be used with <c>typeof()</c> expression, one per each icon. Use the attribute overload which takes a <see cref="System.Type"></see> for an image, and choose your icon class from nested classes in the <see cref="VerifyThemedIcons"></see> class.</para>
 	///	<para>Example:</para>
 	///	<code>[Item(Name="Sample", Icon=typeof(QezegezThemedIconsThemedIcons.Trinity))]</code>
 	///	<h1>CodeBehind</h1>
 	///	<para>In codebehind, we have two distinct tasks: (a) specify some icon in the APIs and (b) render icon images onscreen.</para>
-	///	<para>On the APIs stage you should only manipulate icon identifier objects (of type <see cref="JetBrains.UI.Icons.IconId"></see>, statically defined in <see cref="VerifyTestsThemedIcons"></see> in <c>Id</c> fields). Icon identifier classes (nested in <see cref="VerifyTestsThemedIcons"></see>) should be turned into icon identifier objects as early as possible. Rendering is about getting an <see cref="System.Windows.Media.ImageSource"></see> to assign to WPF, or <see cref="System.Drawing.Bitmap"></see> to use with GDI+ / Windows Forms.</para>
+	///	<para>On the APIs stage you should only manipulate icon identifier objects (of type <see cref="JetBrains.UI.Icons.IconId"></see>, statically defined in <see cref="VerifyThemedIcons"></see> in <c>Id</c> fields). Icon identifier classes (nested in <see cref="VerifyThemedIcons"></see>) should be turned into icon identifier objects as early as possible. Rendering is about getting an <see cref="System.Windows.Media.ImageSource"></see> to assign to WPF, or <see cref="System.Drawing.Bitmap"></see> to use with GDI+ / Windows Forms.</para>
 	///	<para>You should turn an identifier object into a rendered image as late as possible. The identifier is static and lightweight and does not depend on the current theme, while the image is themed and has to be loaded or generated/rasterized. You need an <see cref="JetBrains.Application.Icons.IThemedIconManager"></see> instance to get the image out of an icon identifier object. Once you got the image, you should take care to change it with theme changes — either by using a live image property, or by listening to the theme change event. See <see cref="JetBrains.Application.Icons.IThemedIconManager"></see> and its extensions for the related facilities.</para>
 	///	<para>Example:</para>
 	///	<code>// Getting IconId identifier object to use with APIs
@@ -47,14 +47,14 @@ namespace ReSharperPlugin.VerifyTests
 	///	<h1>Icons Origin</h1>
 	///	<para>This code was generated by a pre-compile build task from a set of input files which are XAML files adhering to a certain convention, as convenient for exporting them from the Illustrator workspace, plus separate PNG files with raster icons. In the projects, these files are designated with <c>ThemedIconsXamlV3</c> and <c>ThemedIconPng</c> build actions and do not themselves get into the output assembly. All of such files are processed, vector images for different themes of the same icon are split and combined into the single list of icons in this assembly. This list is then written into the genearted XAML file (compiled into BAML within assembly), and serves as the source for this generated code.</para>
 	///</remarks>
-	public sealed class VerifyTestsThemedIcons
+	public sealed class VerifyThemedIcons
 	{
 
-		#region VerifyTests
+		#region Verify
 		/// <summary>
 		///	<para>
-		///		<para>VerifyTests Themed Icon generated identifiers:</para>
-		///		<para>— <see cref="VerifyTests"></see> identifier class, for use in attributes, XAML, and generic parameters;</para>
+		///		<para>Verify Themed Icon generated identifiers:</para>
+		///		<para>— <see cref="Verify"></see> identifier class, for use in attributes, XAML, and generic parameters;</para>
 		///		<para>— <see cref="Id"></see> identifier object, as a field in the identifier class, for use where an <see cref="JetBrains.UI.Icons.IconId"></see> value is expected.</para>
 		///		<para>
 		///			<code>
@@ -82,25 +82,25 @@ namespace ReSharperPlugin.VerifyTests
 		///	<para>For details on Themed Icons and their use, see Remarks on the outer class.</para>
 		///</remarks>
 		///<example>
-		///	<code>&lt;Image Source="{icons:ThemedIcon myres:QezegezThemedIconsThemedIcons+VerifyTests}" /&gt;        &lt;!-- XAML --&gt;</code>
+		///	<code>&lt;Image Source="{icons:ThemedIcon myres:QezegezThemedIconsThemedIcons+Verify}" /&gt;        &lt;!-- XAML --&gt;</code>
 		///</example>
 		///<example>
-		///	<code>[Item(Name="Sample", Icon=typeof(QezegezThemedIconsThemedIcons.VerifyTests))]        // C# Type attribute</code>
+		///	<code>[Item(Name="Sample", Icon=typeof(QezegezThemedIconsThemedIcons.Verify))]        // C# Type attribute</code>
 		///</example>
 		///<example>
-		///	<code>IconId iconid = QezegezThemedIconsThemedIcons.VerifyTests.Id;        // IconId identifier object</code>
+		///	<code>IconId iconid = QezegezThemedIconsThemedIcons.Verify.Id;        // IconId identifier object</code>
 		///</example>
 		///<example>
-		///	<code>themediconmanager.GetIcon&lt;QezegezThemedIconsThemedIcons.VerifyTests&gt;()        // Icon image for rendering</code>
+		///	<code>themediconmanager.GetIcon&lt;QezegezThemedIconsThemedIcons.Verify&gt;()        // Icon image for rendering</code>
 		///</example>
 		[global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsAttribute()]
-		public sealed class VerifyTests : global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsClass
+		public sealed class Verify : global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsClass
 		{
 
-			/// <inheritdoc cref="VerifyTests">identifier class</inheritdoc>
-			public static global::JetBrains.UI.Icons.IconId Id = new global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsId(typeof(VerifyTests));
+			/// <inheritdoc cref="Verify">identifier class</inheritdoc>
+			public static global::JetBrains.UI.Icons.IconId Id = new global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsId(typeof(Verify));
 
-			/// <summary>Loads the image for Themed Icon VerifyTests theme aspect color.</summary>
+			/// <summary>Loads the image for Themed Icon Verify theme aspect color.</summary>
 			public global::JetBrains.Util.Icons.TiImage Load_Color()
 			{
 				return global::JetBrains.Util.Icons.TiImageConverter.FromTiSvg("<svg ti:v=\'1\' width=\'16\' height=\'16\' viewBox=\'0,0,16,16\' xmlns=\'http://www.w3.org" +
@@ -171,7 +171,7 @@ namespace ReSharperPlugin.VerifyTests
 						",6.69025037L11.13453441,6.5911364400000005Z\' fill=\'#000000\'/></g></svg>");
 			}
 
-			/// <summary>Loads the image for Themed Icon VerifyTests theme aspect gray.</summary>
+			/// <summary>Loads the image for Themed Icon Verify theme aspect gray.</summary>
 			public global::JetBrains.Util.Icons.TiImage Load_Gray()
 			{
 				return global::JetBrains.Util.Icons.TiImageConverter.FromTiSvg("<svg ti:v=\'1\' width=\'16\' height=\'16\' viewBox=\'0,0,16,16\' xmlns=\'http://www.w3.org" +
@@ -242,7 +242,7 @@ namespace ReSharperPlugin.VerifyTests
 						",6.69025037L11.13453441,6.5911364400000005Z\' fill=\'#CBCBCB\'/></g></svg>");
 			}
 			
-			/// <summary>Returns the set of theme images for Themed Icon VerifyTests.</summary>
+			/// <summary>Returns the set of theme images for Themed Icon Verify.</summary>
 			public override global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsIdOwner.ThemedIconThemeImage[] GetThemeImages()
 			{
 				return new global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsIdOwner.ThemedIconThemeImage[] {

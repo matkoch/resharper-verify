@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull
 import javax.swing.Icon
 import javax.swing.SwingConstants
 
-class VerifyTestsIcons {
+class VerifyIcons {
     companion object {
         // Themed icon by naming convention (XXX_dark)
         // https://jetbrains.design/intellij/resources/icons_list/

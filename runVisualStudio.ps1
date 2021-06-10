@@ -1,5 +1,5 @@
 Param(
-    $RootSuffix = "VerifyTests",
+    $RootSuffix = "Verify",
     $Version = "9999.0.0"
 )
 

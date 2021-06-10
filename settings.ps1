@@ -1,5 +1,5 @@
-$PluginId = "ReSharperPlugin.VerifyTests"
-$SolutionPath = "$PSScriptRoot\ReSharperPlugin.VerifyTests.sln"
+$PluginId = "ReSharperPlugin.Verify"
+$SolutionPath = "$PSScriptRoot\ReSharperPlugin.Verify.sln"
 $SourceBasePath = "$PSScriptRoot\src\dotnet"
 
 $VsWhereOutput = [xml] (& "$PSScriptRoot\tools\vswhere.exe" -format xml -latest -products *)

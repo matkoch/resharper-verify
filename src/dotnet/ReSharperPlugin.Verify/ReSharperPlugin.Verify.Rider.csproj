@@ -8,7 +8,7 @@
 
   <PropertyGroup>
     <TargetFramework>net461</TargetFramework>
-    <AssemblyName>ReSharperPlugin.VerifyTests</AssemblyName>
+    <AssemblyName>ReSharperPlugin.Verify</AssemblyName>
     <RootNamespace>$(AssemblyName)</RootNamespace>
     <IsPackable>false</IsPackable>
     <DefineConstants>$(DefineConstants);RIDER</DefineConstants>

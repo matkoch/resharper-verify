@@ -20,11 +20,11 @@ using JetBrains.ReSharper.UnitTestExplorer.Session.Actions;
 using JetBrains.ReSharper.UnitTestFramework.Session.Actions;
 #endif
 
-namespace ReSharperPlugin.VerifyTests
+namespace ReSharperPlugin.Verify
 {
-    [Action("UnitTestSession.VerifyTestsCompare", "Compare Received & Verified",
-        Icon = typeof(VerifyTestsThemedIcons.VerifyTests), Id = 222011)]
-    public class VerifyTestsCompareAction :
+    [Action("UnitTestSession.VerifyCompare", "Compare Received & Verified",
+        Icon = typeof(VerifyThemedIcons.Verify), Id = 222011)]
+    public class VerifyCompareAction :
 #if RESHARPER
         IInsertBefore<UnitTestSessionContextMenuActionGroup, UnitTestSessionAppendChildren>,
 #endif
@@ -84,7 +84,7 @@ namespace ReSharperPlugin.VerifyTests
                 var verifiedFile = (projectFile.Location.Directory / verifiedFileName).FullPath;
 
 #if RIDER
-                var verifyTestsModel = context.GetComponent<ISolution>().GetProtocolSolution().GetVerifyTestsModel();
+                var verifyTestsModel = context.GetComponent<ISolution>().GetProtocolSolution().GetVerifyModel();
                 verifyTestsModel.Compare.Fire(new CompareData(element.GetPresentation(element.Parent), receivedFile, verifiedFile));
 #endif
             }

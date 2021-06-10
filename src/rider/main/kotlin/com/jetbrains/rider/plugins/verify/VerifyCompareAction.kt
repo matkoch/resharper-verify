@@ -1,4 +1,4 @@
-package com.jetbrains.rider.plugins.verifytests
+package com.jetbrains.rider.plugins.verify
 
 import com.intellij.diff.DiffContentFactory
 import com.intellij.diff.DiffManager
@@ -15,12 +15,12 @@ import com.jetbrains.rider.unitTesting.actions.targets.RiderUnitTestTarget
 import com.jetbrains.rider.unitTesting.actions.targets.RiderUnitTestTargetExecutor
 import com.jetbrains.rider.unitTesting.actions.targets.RiderUnitTestTargetOperation
 import com.jetbrains.rider.unitTesting.actions.targets.RiderUnitTestTargetScope
-import icons.VerifyTestsIcons
+import icons.VerifyIcons
 import java.io.File
 import javax.swing.Icon
 
-class VerifyTestsCompareAction :
-    RiderUnitTestAnActionBase("UnitTestSession.VerifyTestsCompare") {
+class VerifyCompareAction :
+    RiderUnitTestAnActionBase("UnitTestSession.VerifyCompare") {
     override val target
         get() = RiderUnitTestTarget(
             RiderUnitTestTargetOperation.ElementManipulation,
@@ -29,8 +29,8 @@ class VerifyTestsCompareAction :
         )
 
 }
-//class VerifyTestsCompareAction :
-//    AnAction(VerifyTestsIcons.CompareIcon)
+//class VerifyCompareAction :
+//    AnAction(VerifyIcons.CompareIcon)
 //{
 //    override fun actionPerformed(p0: AnActionEvent) {
 //        val receivedFile = File("/Users/matt/RiderProjects/ClassLibrary2/ClassLibrary2/Class1.Test.received.txt")

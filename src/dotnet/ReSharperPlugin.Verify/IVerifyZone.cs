@@ -2,10 +2,10 @@ using JetBrains.Application.BuildScript.Application.Zones;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.UnitTestFramework;
 
-namespace ReSharperPlugin.VerifyTests
+namespace ReSharperPlugin.Verify
 {
     [ZoneDefinition]
-    public interface IVerifyTestsZone : IPsiLanguageZone,
+    public interface IVerifyZone : IPsiLanguageZone,
         IRequire<IUnitTestingZone>
     {
     }

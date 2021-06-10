@@ -31,14 +31,14 @@ using JetBrains.Rd.Text;
 // ReSharper disable RedundantOverflowCheckingContext
 
 
-namespace ReSharperPlugin.VerifyTests
+namespace ReSharperPlugin.Verify
 {
   
   
   /// <summary>
-  /// <p>Generated from: VerifyTestsModel.kt:10</p>
+  /// <p>Generated from: VerifyModel.kt:10</p>
   /// </summary>
-  public class VerifyTestsModel : RdExtBase
+  public class VerifyModel : RdExtBase
   {
     //fields
     //public fields
@@ -48,7 +48,7 @@ namespace ReSharperPlugin.VerifyTests
     [NotNull] private readonly RdSignal<CompareData> _Compare;
     
     //primary constructor
-    private VerifyTestsModel(
+    private VerifyModel(
       [NotNull] RdSignal<CompareData> compare
     )
     {
@@ -58,7 +58,7 @@ namespace ReSharperPlugin.VerifyTests
       BindableChildren.Add(new KeyValuePair<string, object>("compare", _Compare));
     }
     //secondary constructor
-    internal VerifyTestsModel (
+    internal VerifyModel (
     ) : this (
       new RdSignal<CompareData>(CompareData.Read, CompareData.Write)
     ) {}
@@ -86,7 +86,7 @@ namespace ReSharperPlugin.VerifyTests
     //pretty print
     public override void Print(PrettyPrinter printer)
     {
-      printer.Println("VerifyTestsModel (");
+      printer.Println("VerifyModel (");
       using (printer.IndentCookie()) {
         printer.Print("compare = "); _Compare.PrintEx(printer); printer.Println();
       }
@@ -100,17 +100,17 @@ namespace ReSharperPlugin.VerifyTests
       return printer.ToString();
     }
   }
-  public static class SolutionVerifyTestsModelEx
+  public static class SolutionVerifyModelEx
    {
-    public static VerifyTestsModel GetVerifyTestsModel(this JetBrains.Rider.Model.Solution solution)
+    public static VerifyModel GetVerifyModel(this JetBrains.Rider.Model.Solution solution)
     {
-      return solution.GetOrCreateExtension("verifyTestsModel", () => new VerifyTestsModel());
+      return solution.GetOrCreateExtension("verifyTestsModel", () => new VerifyModel());
     }
   }
   
   
   /// <summary>
-  /// <p>Generated from: VerifyTestsModel.kt:15</p>
+  /// <p>Generated from: VerifyModel.kt:15</p>
   /// </summary>
   public sealed class CompareData : IPrintable, IEquatable<CompareData>
   {

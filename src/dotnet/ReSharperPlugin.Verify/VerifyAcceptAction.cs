@@ -28,11 +28,11 @@ using JetBrains.ReSharper.UnitTestExplorer.Session.Actions;
 using JetBrains.ReSharper.UnitTestFramework.Session.Actions;
 #endif
 
-namespace ReSharperPlugin.VerifyTests
+namespace ReSharperPlugin.Verify
 {
-    [Action("UnitTestSession.VerifyTestsAccept", "Accept Received",
-        Icon = typeof(VerifyTestsThemedIcons.VerifyTests), Id = 222011)]
-    public class VerifyTestsAcceptAction :
+    [Action("UnitTestSession.VerifyAccept", "Accept Received",
+        Icon = typeof(VerifyThemedIcons.Verify), Id = 222011)]
+    public class VerifyAcceptAction :
 #if RESHARPER
         IInsertBefore<UnitTestSessionContextMenuActionGroup, UnitTestSessionAppendChildren>,
 #endif

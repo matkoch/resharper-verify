@@ -1,4 +1,4 @@
-package com.jetbrains.rider.plugins.verifytests
+package com.jetbrains.rider.plugins.verify
 
 import com.jetbrains.rider.unitTesting.actions.base.RiderUnitTestAnActionBase
 import com.jetbrains.rider.unitTesting.actions.targets.RiderUnitTestTarget
@@ -6,8 +6,8 @@ import com.jetbrains.rider.unitTesting.actions.targets.RiderUnitTestTargetExecut
 import com.jetbrains.rider.unitTesting.actions.targets.RiderUnitTestTargetOperation
 import com.jetbrains.rider.unitTesting.actions.targets.RiderUnitTestTargetScope
 
-class VerifyTestsAcceptAction :
-    RiderUnitTestAnActionBase("UnitTestSession.VerifyTestsAccept") {
+class VerifyAcceptAction :
+    RiderUnitTestAnActionBase("UnitTestSession.VerifyAccept") {
     override val target
         get() = RiderUnitTestTarget(
             RiderUnitTestTargetOperation.ElementManipulation,

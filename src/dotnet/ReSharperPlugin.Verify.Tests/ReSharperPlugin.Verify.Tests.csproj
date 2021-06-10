@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ReSharperPlugin.VerifyTests\ReSharperPlugin.VerifyTests.csproj" />
+    <ProjectReference Include="..\ReSharperPlugin.Verify\ReSharperPlugin.Verify.csproj" />
   </ItemGroup>
 
   <ItemGroup>

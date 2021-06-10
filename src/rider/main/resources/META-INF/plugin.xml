@@ -1,6 +1,6 @@
 <idea-plugin require-restart="true">
-  <id>verifytests-rider</id>
-  <name>VerifyTests Support</name>
+  <id>verify-rider</id>
+  <name>Verify Support</name>
   <version>_PLACEHOLDER_</version>
   <vendor url="https://github.com/VerifyTests/Verify">Simon Cropp, Matthias Koch</vendor>
   <idea-version since-build="_PLACEHOLDER_" until-build="_PLACEHOLDER_" />
@@ -15,26 +15,26 @@
 
   <project-components>
     <component>
-      <implementation-class>com.jetbrains.rider.plugins.verifytests.CompareManager</implementation-class>
+      <implementation-class>com.jetbrains.rider.plugins.verify.CompareManager</implementation-class>
     </component>
   </project-components>
 
   <actions>
-    <action id="VerifyTestsAcceptReceived"
-            class="com.jetbrains.rider.plugins.verifytests.VerifyTestsAcceptAction"
-            icon="VerifyTestsIcons.AcceptIcon"
+    <action id="VerifyAcceptReceived"
+            class="com.jetbrains.rider.plugins.verify.VerifyAcceptAction"
+            icon="VerifyIcons.AcceptIcon"
             text="Accept Received" description="Accept Received" />
-    <action id="VerifyTestsCompare"
-            class="com.jetbrains.rider.plugins.verifytests.VerifyTestsCompareAction"
-            icon="VerifyTestsIcons.CompareIcon"
+    <action id="VerifyCompare"
+            class="com.jetbrains.rider.plugins.verify.VerifyCompareAction"
+            icon="VerifyIcons.CompareIcon"
             text="Compare Received/Verified" description="Compare Received/Verified" />
 
     <!-- https://plugins.jetbrains.com/docs/intellij/working-with-custom-actions.html#setting-registration-attributes-manually -->
     <!-- https://upsource.jetbrains.com/dotnet-products/file/2e0079b2d06ee5b757178c603216742a15d95c9b/Rider/Frontend/rider/resources/META-INF/RiderUnitTesting.xml?nav=63052:63701:focused&line=789&preview=false -->
-    <group id="Rider.UnitTesting.VerifyTests">
+    <group id="Rider.UnitTesting.Verify">
       <separator />
-      <reference id="VerifyTestsAcceptReceived" />
-      <reference id="VerifyTestsCompare" />
+      <reference id="VerifyAcceptReceived" />
+      <reference id="VerifyCompare" />
       <separator />
       <add-to-group group-id="Rider.UnitTesting.SessionPopup" relative-to-action="RiderUnitTestOpenTestOutputInEditorAction" anchor="before"/>
       <add-to-group group-id="Rider.UnitTesting.LeftSessionToolbar" anchor="last"/>

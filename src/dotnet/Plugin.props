@@ -3,7 +3,7 @@
   <PropertyGroup>
     <SdkVersion>2021.1.3</SdkVersion>
 
-    <Title>VerifyTests</Title>
+    <Title>Verify Support</Title>
     <Description>
       Verify is a snapshot tool that simplifies the assertion of complex data models and documents.
 
@@ -11,7 +11,7 @@
     </Description>
 
     <Authors>Simon Cropp, Matthias Koch</Authors>
-    <Copyright>Copyright $([System.DateTime]::Now.Year) Maintainers of VerifyTests</Copyright>
+    <Copyright>Copyright $([System.DateTime]::Now.Year) Maintainers of Verify Support</Copyright>
     <PackageTags>verify tests resharper plugin</PackageTags>
 
     <PackageProjectUrl>https://github.com/VerifyTests/Verify</PackageProjectUrl>
