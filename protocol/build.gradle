@@ -1,13 +1,12 @@
 plugins {
     id 'java'
-    id 'com.jetbrains.rdgen'
     id 'org.jetbrains.kotlin.jvm'
 }
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib"
-    compile name: "rd-gen"
-    compile name: "rider-model"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation name: "rd-gen"
+    implementation name: "rider-model"
 }
 
 repositories {
