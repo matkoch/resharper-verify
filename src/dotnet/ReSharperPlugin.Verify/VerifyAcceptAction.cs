@@ -31,7 +31,7 @@ using JetBrains.ReSharper.UnitTestFramework.Session.Actions;
 namespace ReSharperPlugin.Verify
 {
     [Action("UnitTestSession.VerifyAccept", "Accept Received",
-        Icon = typeof(VerifyThemedIcons.Verify), Id = 222011)]
+        Icon = typeof(VerifyThemedIcons.Verify))]
     public class VerifyAcceptAction :
 #if RESHARPER
         IInsertBefore<UnitTestSessionContextMenuActionGroup, UnitTestSessionAppendChildren>,

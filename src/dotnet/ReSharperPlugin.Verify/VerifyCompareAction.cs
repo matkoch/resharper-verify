@@ -23,7 +23,7 @@ using JetBrains.ReSharper.UnitTestFramework.Session.Actions;
 namespace ReSharperPlugin.Verify
 {
     [Action("UnitTestSession.VerifyCompare", "Compare Received & Verified",
-        Icon = typeof(VerifyThemedIcons.Verify), Id = 222011)]
+        Icon = typeof(VerifyThemedIcons.Verify))]
     public class VerifyCompareAction :
 #if RESHARPER
         IInsertBefore<UnitTestSessionContextMenuActionGroup, UnitTestSessionAppendChildren>,
