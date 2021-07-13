@@ -37,7 +37,7 @@
       <reference id="VerifyCompare" />
       <separator />
       <add-to-group group-id="Rider.UnitTesting.SessionPopup" relative-to-action="RiderUnitTestOpenTestOutputInEditorAction" anchor="before"/>
-      <add-to-group group-id="Rider.UnitTesting.LeftSessionToolbar" anchor="last"/>
+<!--      <add-to-group group-id="Rider.UnitTesting.LeftSessionToolbar" anchor="last"/>-->
     </group>
   </actions>
 
