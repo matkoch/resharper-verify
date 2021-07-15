@@ -13,7 +13,7 @@ using JetBrains.ReSharper.UnitTestFramework.Common;
 using JetBrains.Util;
 #if RIDER
 using JetBrains.ProjectModel;
-using JetBrains.ReSharper.Host.Features;
+using JetBrains.RdBackend.Common.Features;
 #endif
 #if RESHARPER
 using JetBrains.ReSharper.UnitTestExplorer.Session.Actions;
