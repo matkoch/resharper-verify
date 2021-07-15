@@ -8,7 +8,7 @@
 ## Features
 
 - _Accept Received_ action in test context menu to accept the last received snapshot data (test is marked as outdated)
-- _Compare Received/Verified_ action in test context menu to compare last received with verified snapshot data in [diff view](https://www.jetbrains.com/help/rider/Comparing_Files_and_Folders.html)
+- _Compare Received/Verified_ action in test context menu to compare last received and verified snapshot with the preferred [diff engine](https://github.com/VerifyTests/DiffEngine#supported-tools)
 - Actions support multi-selection
 
 ![Verify Support features](features.gif)
