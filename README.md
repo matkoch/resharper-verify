@@ -11,4 +11,4 @@
 - _Compare Received/Verified_ action in test context menu to compare last received with verified snapshot data in [diff view](https://www.jetbrains.com/help/rider/Comparing_Files_and_Folders.html)
 - Actions support multi-selection
 
-![Verify Support features](features.png)
+![Verify Support features](features.gif)
