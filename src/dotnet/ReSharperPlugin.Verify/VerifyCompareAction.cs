@@ -16,13 +16,14 @@ using JetBrains.ProjectModel;
 using JetBrains.RdBackend.Common.Features;
 #endif
 #if RESHARPER
+using DiffEngine;
 using JetBrains.ReSharper.UnitTestExplorer.Session.Actions;
 using JetBrains.ReSharper.UnitTestFramework.Session.Actions;
 #endif
 
 namespace ReSharperPlugin.Verify
 {
-    [Action("UnitTestSession.VerifyCompare", "Compare Received & Verified",
+    [Action("UnitTestSession.VerifyCompare", "Compare Received and Verified",
         Icon = typeof(VerifyThemedIcons.Verify))]
     public class VerifyCompareAction :
 #if RESHARPER
@@ -86,6 +87,8 @@ namespace ReSharperPlugin.Verify
 #if RIDER
                 var verifyTestsModel = context.GetComponent<ISolution>().GetProtocolSolution().GetVerifyModel();
                 verifyTestsModel.Compare.Fire(new CompareData(element.GetPresentation(element.Parent), receivedFile, verifiedFile));
+#else
+                DiffRunner.Launch(receivedFile, verifiedFile);
 #endif
             }
         }
