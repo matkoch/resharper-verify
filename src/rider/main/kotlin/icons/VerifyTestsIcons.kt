@@ -11,15 +11,7 @@ class VerifyIcons {
     companion object {
         // Themed icon by naming convention (XXX_dark)
         // https://jetbrains.design/intellij/resources/icons_list/
-        @JvmField val Icon = IconLoader.getIcon("/META-INF/pluginIcon.svg")
         @JvmField val CompareIcon = IconLoader.getIcon("/icons/compare.svg")
         @JvmField val AcceptIcon = IconLoader.getIcon("/icons/accept.svg")
-
-        private fun load(attachment: Icon): @NotNull Icon {
-            val icon = LayeredIcon(2)
-            icon.setIcon(Icon, 0)
-            icon.setIcon(attachment, 1)
-            return icon
-        }
     }
 }
