@@ -82,12 +82,11 @@ namespace ReSharperPlugin.Verify
 
                 var projectFile = element.GetProjectFiles().NotNull().SingleItem().NotNull();
                 var exceptionLines = result.GetExceptionChunk(2).SplitByNewLine();
-                // TODO: Consider "Verify command placed in clipboard."
-                var (receivedFileName, verifiedFileName) = exceptionLines[2] == "Pending verification:"
-                    ? (exceptionLines[4], exceptionLines[3].Split(':').First())
-                    : (exceptionLines[3].TrimFromStart("Received: "), exceptionLines[4].TrimFromStart("Verified: "));
-                var receivedFile = (projectFile.Location.Directory / receivedFileName).FullPath;
-                var verifiedFile = (projectFile.Location.Directory / verifiedFileName).FullPath;
+                var (receivedFileName, verifiedFileName) = (
+                    exceptionLines.FirstOrDefault(x => x.StartsWith("Received"))?.TrimFromStart("Received: "),
+                    exceptionLines.FirstOrDefault(x => x.StartsWith("Verified"))?.TrimFromStart("Verified: "));
+                var receivedFile = (projectFile.Location.Directory / receivedFileName.NotNull("receivedFileName")).FullPath;
+                var verifiedFile = (projectFile.Location.Directory / verifiedFileName.NotNull("verifiedFileName")).FullPath;
 
                 if (File.Exists(verifiedFile))
                     File.Delete(verifiedFile);
