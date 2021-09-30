@@ -1,31 +1,20 @@
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using JetBrains.Application.DataContext;
-using JetBrains.Application.Icons;
-using JetBrains.Application.Icons.CompiledIconsCs;
 using JetBrains.Application.UI.Actions;
 using JetBrains.Application.UI.ActionsRevised.Menu;
 using JetBrains.Application.UI.ActionSystem.ActionsRevised.Menu;
-using JetBrains.Application.UI.Icons.CompiledIcons;
-using JetBrains.Application.UI.Icons.ComposedIcons;
 using JetBrains.Diagnostics;
 using JetBrains.DocumentModel.DataContext;
-using JetBrains.IDE.UI.Extensions;
 using JetBrains.ReSharper.Feature.Services.Actions;
 using JetBrains.ReSharper.Psi.Files;
-using JetBrains.ReSharper.Resources.Shell;
-using JetBrains.ReSharper.UnitTestFramework;
-using JetBrains.ReSharper.UnitTestFramework.Common;
+using JetBrains.ReSharper.UnitTestFramework.Actions;
 using JetBrains.ReSharper.UnitTestFramework.Criteria;
-using JetBrains.ReSharper.UnitTestFramework.Resources;
-using JetBrains.UI.Icons;
-using JetBrains.UI.ThemedIcons;
+using JetBrains.ReSharper.UnitTestFramework.Execution;
 using JetBrains.Util;
-using JetBrains.Util.Icons;
 #if RESHARPER
 using JetBrains.ReSharper.UnitTestExplorer.Session.Actions;
-using JetBrains.ReSharper.UnitTestFramework.Session.Actions;
+using JetBrains.ReSharper.UnitTestFramework.UI.Session.Actions;
 #endif
 
 namespace ReSharperPlugin.Verify
@@ -49,10 +38,10 @@ namespace ReSharperPlugin.Verify
         public bool Update(IDataContext context, ActionPresentation presentation, DelegateUpdate nextUpdate)
         {
             var resultManager = context.GetComponent<IUnitTestResultManager>();
-            var criterionEvaluator = context.GetComponent<IUnitTestElementCriterionEvaluator>();
-            var session = context.GetData(UnitTestDataConstants.UnitTestSession.CURRENT);
-            var elements = context.GetData(UnitTestDataConstants.UnitTestElements.SELECTED)?.Evaluate(criterionEvaluator).ToList() ??
-                           new List<IUnitTestElement>();
+            var session = context.GetData(UnitTestDataConstants.Session.CURRENT);
+            var elements = context.GetData(UnitTestDataConstants.Elements.SELECTED)?.Criterion.Evaluate();
+            if (session == null || elements == null)
+                return false;
 
             foreach (var element in elements)
             {
@@ -69,10 +58,10 @@ namespace ReSharperPlugin.Verify
         public void Execute(IDataContext context, DelegateExecute nextExecute)
         {
             var resultManager = context.GetComponent<IUnitTestResultManager>();
-            var criterionEvaluator = context.GetComponent<IUnitTestElementCriterionEvaluator>();
-            var session = context.GetData(UnitTestDataConstants.UnitTestSession.CURRENT);
-            var elements = context.GetData(UnitTestDataConstants.UnitTestElements.SELECTED)?.Evaluate(criterionEvaluator).ToList() ??
-                           new List<IUnitTestElement>();
+            var session = context.GetData(UnitTestDataConstants.Session.CURRENT);
+            var elements = context.GetData(UnitTestDataConstants.Elements.SELECTED)?.Criterion.Evaluate();
+            if (session == null || elements == null)
+                return;
 
             foreach (var element in elements)
             {

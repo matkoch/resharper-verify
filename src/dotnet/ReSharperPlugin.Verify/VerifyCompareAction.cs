@@ -1,24 +1,22 @@
-using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Application.DataContext;
 using JetBrains.Application.UI.Actions;
 using JetBrains.Application.UI.ActionsRevised.Menu;
 using JetBrains.Application.UI.ActionSystem.ActionsRevised.Menu;
 using JetBrains.Diagnostics;
-using JetBrains.DocumentModel.DataContext;
-using JetBrains.ReSharper.Feature.Services.Actions;
+using JetBrains.DocumentModel.DataContext;using JetBrains.ReSharper.Feature.Services.Actions;
 using JetBrains.ReSharper.Psi.Files;
-using JetBrains.ReSharper.UnitTestFramework;
-using JetBrains.ReSharper.UnitTestFramework.Common;
+using JetBrains.ReSharper.UnitTestFramework.Actions;
+using JetBrains.ReSharper.UnitTestFramework.Criteria;
+using JetBrains.ReSharper.UnitTestFramework.Execution;
 using JetBrains.Util;
-#if RIDER
-using JetBrains.ProjectModel;
-using JetBrains.RdBackend.Common.Features;
-#endif
 #if RESHARPER
 using DiffEngine;
 using JetBrains.ReSharper.UnitTestExplorer.Session.Actions;
-using JetBrains.ReSharper.UnitTestFramework.Session.Actions;
+using JetBrains.ReSharper.UnitTestFramework.UI.Session.Actions;
+#elif RIDER
+using JetBrains.ProjectModel;
+using JetBrains.RdBackend.Common.Features;
 #endif
 
 namespace ReSharperPlugin.Verify
@@ -42,11 +40,10 @@ namespace ReSharperPlugin.Verify
         public bool Update(IDataContext context, ActionPresentation presentation, DelegateUpdate nextUpdate)
         {
             var resultManager = context.GetComponent<IUnitTestResultManager>();
-            var criterionEvaluator = context.GetComponent<IUnitTestElementCriterionEvaluator>();
-            var session = context.GetData(UnitTestDataConstants.UnitTestSession.CURRENT);
-            var elements = context.GetData(UnitTestDataConstants.UnitTestElements.SELECTED)
-                               ?.Evaluate(criterionEvaluator).ToList() ??
-                           new List<IUnitTestElement>();
+            var session = context.GetData(UnitTestDataConstants.Session.CURRENT);
+            var elements = context.GetData(UnitTestDataConstants.Elements.SELECTED)?.Criterion.Evaluate();
+            if (session == null || elements == null)
+                return false;
 
             foreach (var element in elements)
             {
@@ -63,11 +60,10 @@ namespace ReSharperPlugin.Verify
         public void Execute(IDataContext context, DelegateExecute nextExecute)
         {
             var resultManager = context.GetComponent<IUnitTestResultManager>();
-            var criterionEvaluator = context.GetComponent<IUnitTestElementCriterionEvaluator>();
-            var session = context.GetData(UnitTestDataConstants.UnitTestSession.CURRENT);
-            var elements = context.GetData(UnitTestDataConstants.UnitTestElements.SELECTED)
-                               ?.Evaluate(criterionEvaluator).ToList() ??
-                           new List<IUnitTestElement>();
+            var session = context.GetData(UnitTestDataConstants.Session.CURRENT);
+            var elements = context.GetData(UnitTestDataConstants.Elements.SELECTED)?.Criterion.Evaluate();
+            if (session == null || elements == null)
+                return;
 
             foreach (var element in elements)
             {
@@ -85,7 +81,7 @@ namespace ReSharperPlugin.Verify
 
 #if RIDER
                 var verifyTestsModel = context.GetComponent<ISolution>().GetProtocolSolution().GetVerifyModel();
-                verifyTestsModel.Compare.Fire(new CompareData(element.GetPresentation(element.Parent), receivedFile, verifiedFile));
+                verifyTestsModel.Compare.Fire(new CompareData(element.GetPresentation(), receivedFile, verifiedFile));
 #else
                 DiffRunner.Launch(receivedFile, verifiedFile);
 #endif
