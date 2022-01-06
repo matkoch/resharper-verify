@@ -1,10 +1,10 @@
+using System;
 using System.IO;
 using System.Linq;
 using JetBrains.Application.DataContext;
 using JetBrains.Application.UI.Actions;
 using JetBrains.Application.UI.ActionsRevised.Menu;
 using JetBrains.Application.UI.ActionSystem.ActionsRevised.Menu;
-using JetBrains.Diagnostics;
 using JetBrains.DocumentModel.DataContext;
 using JetBrains.ReSharper.Feature.Services.Actions;
 using JetBrains.ReSharper.Psi.Files;
@@ -69,13 +69,17 @@ namespace ReSharperPlugin.Verify
                 if (!HasVerifyException(result))
                     continue;
 
-                var projectFile = element.GetProjectFiles().NotNull().SingleItem().NotNull();
-                var exceptionLines = result.GetExceptionChunk(2).SplitByNewLine();
-                var (receivedFileName, verifiedFileName) = (
-                    exceptionLines.FirstOrDefault(x => x.StartsWith("Received"))?.TrimFromStart("Received: "),
-                    exceptionLines.FirstOrDefault(x => x.StartsWith("Verified"))?.TrimFromStart("Verified: "));
-                var receivedFile = (projectFile.Location.Directory / receivedFileName.NotNull("receivedFileName")).FullPath;
-                var verifiedFile = (projectFile.Location.Directory / verifiedFileName.NotNull("verifiedFileName")).FullPath;
+                var exceptionLines = result.GetExceptionChunk(2)
+                    .SplitByNewLine()
+                    //Received path and Verified path are at the end of the exception message
+                    .Reverse()
+                    .ToArray();
+                var (receivedFile, verifiedFile) = (
+                    exceptionLines.FirstOrDefault(x => x.StartsWith("Received path: "))?.TrimFromStart("Received path: "),
+                    exceptionLines.FirstOrDefault(x => x.StartsWith("Verified path: "))?.TrimFromStart("Verified path: "));
+
+                if (receivedFile == null || verifiedFile == null)
+                    throw new Exception("Received or Verified file path not found in exception. Update to at least version 14.13.1 of Verify. ");
 
                 if (File.Exists(verifiedFile))
                     File.Delete(verifiedFile);
