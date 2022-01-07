@@ -67,8 +67,14 @@ static class VerifyExceptionReader
     public static bool TryGetElements(this IDataContext context, out IUnitTestSession session, out IQueryResult elements)
     {
         session = context.GetData(UnitTestDataConstants.Session.CURRENT);
+        if (session == null)
+        {
+            elements = null;
+            return false;
+        }
+
         elements = context.GetData(UnitTestDataConstants.Elements.SELECTED)?.Criterion.Evaluate();
-        return session != null && elements != null;
+        return elements != null;
     }
 
     static IEnumerable<string> ExceptionChuckValues(this UnitTestResultData result)
