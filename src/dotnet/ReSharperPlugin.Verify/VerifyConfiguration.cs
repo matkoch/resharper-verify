@@ -1,17 +1,16 @@
 using System;
 using JetBrains.Application;
 
-namespace ReSharperPlugin.Verify
+namespace ReSharperPlugin.Verify;
+
+[ShellComponent]
+public class VerifyConfiguration
 {
-    [ShellComponent]
-    public class VerifyConfiguration
+    public VerifyConfiguration()
     {
-        public VerifyConfiguration()
-        {
-            Environment.SetEnvironmentVariable(
-                "Verify_DisableClipboard",
-                bool.TrueString,
-                EnvironmentVariableTarget.Process);
-        }
+        Environment.SetEnvironmentVariable(
+            "Verify_DisableClipboard",
+            bool.TrueString,
+            EnvironmentVariableTarget.Process);
     }
 }

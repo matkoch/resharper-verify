@@ -9,45 +9,44 @@ using JetBrains.ReSharper.UnitTestExplorer.Session.Actions;
 using JetBrains.ReSharper.UnitTestFramework.UI.Session.Actions;
 #endif
 
-namespace ReSharperPlugin.Verify
-{
-    [Action("UnitTestSession.VerifyAccept", "Accept Received",
-        Icon = typeof(VerifyThemedIcons.Verify))]
-    public class VerifyAcceptAction :
+namespace ReSharperPlugin.Verify;
+
+[Action("UnitTestSession.VerifyAccept", "Accept Received",
+    Icon = typeof(VerifyThemedIcons.Verify))]
+public class VerifyAcceptAction :
 #if RESHARPER
-        IInsertBefore<UnitTestSessionContextMenuActionGroup, UnitTestSessionAppendChildren>,
+    IInsertBefore<UnitTestSessionContextMenuActionGroup, UnitTestSessionAppendChildren>,
 #endif
-        IExecutableAction,
-        IActionWithUpdateRequirement
+    IExecutableAction,
+    IActionWithUpdateRequirement
+{
+    public IActionRequirement GetRequirement(IDataContext context)
     {
-        public IActionRequirement GetRequirement(IDataContext context)
+        return context.VerifyRequirement();
+    }
+
+    public bool Update(IDataContext context, ActionPresentation presentation, DelegateUpdate next)
+    {
+        return context.IsVerifyException();
+    }
+
+    public void Execute(IDataContext context, DelegateExecute next)
+    {
+        var manager = context.ResultManager();
+        if (!context.TryGetElements(out var session, out var elements))
+            return;
+
+        foreach (var element in elements)
         {
-            return context.VerifyRequirement();
-        }
+            var result = manager.GetResultData(element, session);
+            if (!result.TryGetVerifyFiles(out var received, out var verified))
+                continue;
 
-        public bool Update(IDataContext context, ActionPresentation presentation, DelegateUpdate next)
-        {
-            return context.IsVerifyException();
-        }
+            if (File.Exists(verified))
+                File.Delete(verified);
+            File.Move(received, verified);
 
-        public void Execute(IDataContext context, DelegateExecute next)
-        {
-            var manager = context.ResultManager();
-            if (!context.TryGetElements(out var session, out var elements))
-                return;
-
-            foreach (var element in elements)
-            {
-                var result = manager.GetResultData(element, session);
-                if (!result.TryGetVerifyFiles(out var received, out var verified))
-                    continue;
-
-                if (File.Exists(verified))
-                    File.Delete(verified);
-                File.Move(received, verified);
-
-                manager.MarkOutdated(element);
-            }
+            manager.MarkOutdated(element);
         }
     }
 }

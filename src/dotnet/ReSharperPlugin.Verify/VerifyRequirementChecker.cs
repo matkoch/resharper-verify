@@ -4,18 +4,15 @@ using JetBrains.DocumentModel.DataContext;
 using JetBrains.ReSharper.Feature.Services.Actions;
 using JetBrains.ReSharper.Psi.Files;
 
-namespace ReSharperPlugin.Verify
+static class VerifyRequirementChecker
 {
-    public static class VerifyRequirementChecker
+    public static IActionRequirement VerifyRequirement(this IDataContext context)
     {
-        public static IActionRequirement VerifyRequirement(this IDataContext context)
+        if (context.GetData(DocumentModelDataConstants.DOCUMENT) == null)
         {
-            if (context.GetData(DocumentModelDataConstants.DOCUMENT) == null)
-            {
-                return CommitAllDocumentsRequirement.TryGetInstance(context);
-            }
-
-            return CurrentPsiFileRequirement.FromDataContext(context);
+            return CommitAllDocumentsRequirement.TryGetInstance(context);
         }
+
+        return CurrentPsiFileRequirement.FromDataContext(context);
     }
 }

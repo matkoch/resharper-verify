@@ -17,6 +17,7 @@
     <PackageProjectUrl>https://github.com/VerifyTests/Verify</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/VerifyTests/Verify/blob/master/license.txt</PackageLicenseUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/VerifyTests/Verify/master/src/icon.png</PackageIconUrl>
+    <LangVersion>10.0</LangVersion>
   </PropertyGroup>
 
 </Project>
