@@ -87,7 +87,7 @@ static class VerifyExceptionReader
 
     static bool IsVerifyException(this UnitTestResultData result)
     {
-        var exceptionChunk = result.GetExceptionChunk(0);
-        return exceptionChunk.StartsWith("VerifyException");
+        var chunk = result.GetExceptionChunk(0);
+        return chunk.StartsWith("VerifyException");
     }
 }
