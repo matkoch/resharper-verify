@@ -1,7 +1,7 @@
 ﻿<Project>
 
   <PropertyGroup>
-    <SdkVersion>2021.3.1</SdkVersion>
+    <SdkVersion>2021.4.0</SdkVersion>
 
     <Title>Verify Support</Title>
     <Description>
@@ -17,7 +17,6 @@
     <PackageProjectUrl>https://github.com/VerifyTests/Verify</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/VerifyTests/Verify/blob/master/license.txt</PackageLicenseUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/VerifyTests/Verify/master/src/icon.png</PackageIconUrl>
-    <LangVersion>10.0</LangVersion>
   </PropertyGroup>
 
 </Project>
