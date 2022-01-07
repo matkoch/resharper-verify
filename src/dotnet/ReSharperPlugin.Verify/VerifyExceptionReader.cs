@@ -75,8 +75,7 @@ static class VerifyExceptionReader
     {
         for (var i = 0; i < result.ExceptionChunks; i++)
         {
-            var exceptionChunk = result.GetExceptionChunk(i);
-            yield return exceptionChunk;
+            yield return result.GetExceptionChunk(i);
         }
     }
 
