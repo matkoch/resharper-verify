@@ -29,15 +29,9 @@ static class VerifyExceptionReader
                 .Reverse()
                 .ToArray();
 
-            if (received == null)
-            {
-                received = lines.FirstOrDefault(x => x.StartsWith("Received path: "))?.TrimFromStart("Received path: ");
-            }
+            received ??= lines.FirstOrDefault(x => x.StartsWith("Received path: "))?.TrimFromStart("Received path: ");
 
-            if (verified == null)
-            {
-                verified = lines.FirstOrDefault(x => x.StartsWith("Verified path: "))?.TrimFromStart("Verified path: ");
-            }
+            verified ??= lines.FirstOrDefault(x => x.StartsWith("Verified path: "))?.TrimFromStart("Verified path: ");
 
             if (received != null && verified != null)
             {
