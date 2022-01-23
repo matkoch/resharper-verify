@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <PackageReference Include="JetBrains.Rider.SDK" Version="$(SdkVersion)" />
+    <PackageReference Include="Verify.ExceptionParsing" Version="15.0.0-beta.6" />
   </ItemGroup>
 
   <!-- TODO: uncomment for xaml icons -->

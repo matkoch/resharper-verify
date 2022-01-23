@@ -3,9 +3,9 @@ using JetBrains.Application.DataContext;
 using JetBrains.Application.UI.Actions;
 using JetBrains.Application.UI.ActionsRevised.Menu;
 using JetBrains.Application.UI.ActionSystem.ActionsRevised.Menu;
-using JetBrains.Diagnostics;
 using JetBrains.ReSharper.UnitTestFramework.Execution;
 using JetBrains.Util;
+using VerifyTests.ExceptionParsing;
 #if RESHARPER
 using DiffEngine;
 using JetBrains.ReSharper.UnitTestExplorer.Session.Actions;
@@ -74,19 +74,22 @@ public class VerifyCompareAction :
                 continue;
             }
 
-            var projectFile = element.GetProjectFiles().NotNull().SingleItem().NotNull();
             var exceptionLines = result.GetExceptionChunk(2).SplitByNewLine();
-            var (receivedFileName, verifiedFileName) = (
-                exceptionLines.FirstOrDefault(x => x.StartsWith("Received"))?.TrimFromStart("Received: "),
-                exceptionLines.FirstOrDefault(x => x.StartsWith("Verified"))?.TrimFromStart("Verified: "));
-            var receivedFile = (projectFile.Location.Directory / receivedFileName.NotNull("receivedFileName")).FullPath;
-            var verifiedFile = (projectFile.Location.Directory / verifiedFileName.NotNull("verifiedFileName")).FullPath;
 
+            var parsed = Parser.Parse(exceptionLines);
+            var files = parsed.New.Concat(parsed.NotEqual);
 #if RIDER
             var verifyTestsModel = context.GetComponent<ISolution>().GetProtocolSolution().GetVerifyModel();
-            verifyTestsModel.Compare.Fire(new CompareData(element.GetPresentation(), receivedFile, verifiedFile));
+            var presentation = element.GetPresentation();
+            foreach (var file in files)
+            {
+                verifyTestsModel.Compare.Fire(new CompareData(presentation, file.Received, file.Verified));
+            }
 #else
-            DiffRunner.Launch(receivedFile, verifiedFile);
+            foreach (var file in files)
+            {
+                DiffRunner.Launch(file.Received, file.Verified);
+            }
 #endif
         }
     }

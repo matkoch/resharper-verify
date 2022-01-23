@@ -4,9 +4,9 @@ using JetBrains.Application.DataContext;
 using JetBrains.Application.UI.Actions;
 using JetBrains.Application.UI.ActionsRevised.Menu;
 using JetBrains.Application.UI.ActionSystem.ActionsRevised.Menu;
-using JetBrains.Diagnostics;
 using JetBrains.ReSharper.UnitTestFramework.Execution;
 using JetBrains.Util;
+using VerifyTests.ExceptionParsing;
 #if RESHARPER
 using JetBrains.ReSharper.UnitTestExplorer.Session.Actions;
 using JetBrains.ReSharper.UnitTestFramework.UI.Session.Actions;
@@ -42,7 +42,9 @@ public class VerifyAcceptAction :
         {
             var result = resultManager.GetResultData(element, session);
             if (!result.HasVerifyException())
+            {
                 continue;
+            }
 
             return true;
         }
@@ -69,17 +71,23 @@ public class VerifyAcceptAction :
                 continue;
             }
 
-            var projectFile = element.GetProjectFiles().NotNull().SingleItem().NotNull();
             var exceptionLines = result.GetExceptionChunk(2).SplitByNewLine();
-            var (receivedFileName, verifiedFileName) = (
-                exceptionLines.FirstOrDefault(x => x.StartsWith("Received"))?.TrimFromStart("Received: "),
-                exceptionLines.FirstOrDefault(x => x.StartsWith("Verified"))?.TrimFromStart("Verified: "));
-            var receivedFile = (projectFile.Location.Directory / receivedFileName.NotNull("receivedFileName")).FullPath;
-            var verifiedFile = (projectFile.Location.Directory / verifiedFileName.NotNull("verifiedFileName")).FullPath;
+            var parsed = Parser.Parse(exceptionLines);
 
-            if (File.Exists(verifiedFile))
-                File.Delete(verifiedFile);
-            File.Move(receivedFile, verifiedFile);
+            foreach (var file in parsed.New.Concat(parsed.NotEqual))
+            {
+                if (File.Exists(file.Verified))
+                {
+                    File.Delete(file.Verified);
+                }
+
+                File.Move(file.Received, file.Verified);
+            }
+
+            foreach (var file in parsed.Delete)
+            {
+                File.Delete(file);
+            }
 
             resultManager.MarkOutdated(element);
         }
