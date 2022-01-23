@@ -48,7 +48,7 @@ public class VerifyCompareAction :
         foreach (var element in elements)
         {
             var result = resultManager.GetResultData(element, session);
-            if (!HasVerifyException(result))
+            if (!result.HasVerifyException())
                 continue;
 
             return true;
@@ -68,7 +68,7 @@ public class VerifyCompareAction :
         foreach (var element in elements)
         {
             var result = resultManager.GetResultData(element, session);
-            if (!HasVerifyException(result))
+            if (!result.HasVerifyException())
                 continue;
 
             var projectFile = element.GetProjectFiles().NotNull().SingleItem().NotNull();
@@ -86,12 +86,5 @@ public class VerifyCompareAction :
             DiffRunner.Launch(receivedFile, verifiedFile);
 #endif
         }
-    }
-
-    private static bool HasVerifyException(UnitTestResultData result)
-    {
-        return result.ExceptionChunks > 2 &&
-               result.GetExceptionChunk(0) == "VerifyException" &&
-               result.GetExceptionChunk(2).StartsWith("Results do not match");
     }
 }
