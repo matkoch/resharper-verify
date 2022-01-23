@@ -1,19 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <LangVersion>10.0</LangVersion>
     <TargetFramework>net472</TargetFramework>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="JetBrains.ReSharper.SDK.Tests" Version="$(SdkVersion)" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ReSharperPlugin.Verify\ReSharperPlugin.Verify.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Remove="test/**/*" />
     <None Include="test/**/*" />
   </ItemGroup>

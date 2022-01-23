@@ -1,9 +1,8 @@
 using JetBrains.Application.BuildScript.Application.Zones;
 
-namespace ReSharperPlugin.Verify
+namespace ReSharperPlugin.Verify;
+
+[ZoneMarker]
+public class ZoneMarker : IRequire<IVerifyZone>
 {
-    [ZoneMarker]
-    public class ZoneMarker : IRequire<IVerifyZone>
-    {
-    }
 }
