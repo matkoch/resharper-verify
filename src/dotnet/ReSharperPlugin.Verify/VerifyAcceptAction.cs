@@ -5,11 +5,6 @@ using JetBrains.Application.UI.Actions;
 using JetBrains.Application.UI.ActionsRevised.Menu;
 using JetBrains.Application.UI.ActionSystem.ActionsRevised.Menu;
 using JetBrains.Diagnostics;
-using JetBrains.DocumentModel.DataContext;
-using JetBrains.ReSharper.Feature.Services.Actions;
-using JetBrains.ReSharper.Psi.Files;
-using JetBrains.ReSharper.UnitTestFramework.Actions;
-using JetBrains.ReSharper.UnitTestFramework.Criteria;
 using JetBrains.ReSharper.UnitTestFramework.Execution;
 using JetBrains.Util;
 #if RESHARPER
@@ -19,8 +14,7 @@ using JetBrains.ReSharper.UnitTestFramework.UI.Session.Actions;
 
 namespace ReSharperPlugin.Verify;
 
-[Action("UnitTestSession.VerifyAccept", "Accept Received",
-    Icon = typeof(VerifyThemedIcons.Verify))]
+[Action("UnitTestSession.VerifyAccept", "Accept Received", Icon = typeof(VerifyThemedIcons.Verify))]
 public class VerifyAcceptAction :
 #if RESHARPER
     IInsertBefore<UnitTestSessionContextMenuActionGroup, UnitTestSessionAppendChildren>,
@@ -30,18 +24,19 @@ public class VerifyAcceptAction :
 {
     public IActionRequirement GetRequirement(IDataContext dataContext)
     {
-        return dataContext.GetData(DocumentModelDataConstants.DOCUMENT) != null
-            ? CurrentPsiFileRequirement.FromDataContext(dataContext)
-            : CommitAllDocumentsRequirement.TryGetInstance(dataContext);
+        return dataContext.GetRequirement();
     }
 
     public bool Update(IDataContext context, ActionPresentation presentation, DelegateUpdate nextUpdate)
     {
-        var resultManager = context.GetComponent<IUnitTestResultManager>();
-        var session = context.GetData(UnitTestDataConstants.Session.CURRENT);
-        var elements = context.GetData(UnitTestDataConstants.Elements.SELECTED)?.Criterion.Evaluate();
+        var session = context.GetTestSession();
+        var elements = context.GetElements();
         if (session == null || elements == null)
+        {
             return false;
+        }
+
+        var resultManager = context.GetComponent<IUnitTestResultManager>();
 
         foreach (var element in elements)
         {
@@ -57,17 +52,22 @@ public class VerifyAcceptAction :
 
     public void Execute(IDataContext context, DelegateExecute nextExecute)
     {
-        var resultManager = context.GetComponent<IUnitTestResultManager>();
-        var session = context.GetData(UnitTestDataConstants.Session.CURRENT);
-        var elements = context.GetData(UnitTestDataConstants.Elements.SELECTED)?.Criterion.Evaluate();
+        var session = context.GetTestSession();
+        var elements = context.GetElements();
         if (session == null || elements == null)
+        {
             return;
+        }
+
+        var resultManager = context.GetComponent<IUnitTestResultManager>();
 
         foreach (var element in elements)
         {
             var result = resultManager.GetResultData(element, session);
             if (!result.HasVerifyException())
+            {
                 continue;
+            }
 
             var projectFile = element.GetProjectFiles().NotNull().SingleItem().NotNull();
             var exceptionLines = result.GetExceptionChunk(2).SplitByNewLine();
