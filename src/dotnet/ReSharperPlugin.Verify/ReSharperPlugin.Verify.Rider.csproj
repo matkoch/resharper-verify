@@ -17,8 +17,11 @@
 
   <ItemGroup>
     <PackageReference Include="JetBrains.Rider.SDK" Version="$(SdkVersion)" />
+    <PackageReference Include="Verify.ExceptionParsing" Version="15.0.1" />
   </ItemGroup>
-
+  <ItemGroup>
+    <Content Include="bin\$(AssemblyName)\$(Configuration)\Verify.ExceptionParsing.dll" PackagePath="dotFiles" Pack="true" />
+  </ItemGroup>
   <!-- TODO: uncomment for xaml icons -->
   <ItemGroup>
     <Reference Include="System.Xaml" />

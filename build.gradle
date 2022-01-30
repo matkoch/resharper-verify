@@ -172,6 +172,7 @@ prepareSandbox {
     def dllFiles = [
             "$outputFolder/${DotnetPluginId}.dll",
             "$outputFolder/${DotnetPluginId}.pdb",
+            "$outputFolder/Verify.ExceptionParsing.dll",
             // TODO: add additional assemblies
     ]
 
