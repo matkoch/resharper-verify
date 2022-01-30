@@ -3,8 +3,12 @@ using JetBrains.Application.DataContext;
 using JetBrains.Application.UI.Actions;
 using JetBrains.Application.UI.ActionsRevised.Menu;
 using JetBrains.Application.UI.ActionSystem.ActionsRevised.Menu;
+using JetBrains.DocumentModel.DataContext;
+using JetBrains.ReSharper.Feature.Services.Actions;
+using JetBrains.ReSharper.Psi.Files;
+using JetBrains.ReSharper.UnitTestFramework.Actions;
+using JetBrains.ReSharper.UnitTestFramework.Criteria;
 using JetBrains.ReSharper.UnitTestFramework.Execution;
-using JetBrains.Util;
 using VerifyTests.ExceptionParsing;
 #if RESHARPER
 using DiffEngine;
@@ -27,13 +31,15 @@ public class VerifyCompareAction :
 {
     public IActionRequirement GetRequirement(IDataContext dataContext)
     {
-        return dataContext.GetRequirement();
+        return dataContext.GetData(DocumentModelDataConstants.DOCUMENT) != null 
+            ? CurrentPsiFileRequirement.FromDataContext(dataContext)
+            : CommitAllDocumentsRequirement.TryGetInstance(dataContext);
     }
 
     public bool Update(IDataContext context, ActionPresentation presentation, DelegateUpdate nextUpdate)
     {
-        var session = context.GetTestSession();
-        var elements = context.GetElements();
+        var session = context.GetData(UnitTestDataConstants.Session.CURRENT);
+        var elements = context.GetData(UnitTestDataConstants.Elements.SELECTED)?.Criterion.Evaluate();
         if (session == null || elements == null)
         {
             return false;
@@ -57,8 +63,8 @@ public class VerifyCompareAction :
 
     public void Execute(IDataContext context, DelegateExecute nextExecute)
     {
-        var session = context.GetTestSession();
-        var elements = context.GetElements();
+        var session = context.GetData(UnitTestDataConstants.Session.CURRENT);
+        var elements = context.GetData(UnitTestDataConstants.Elements.SELECTED)?.Criterion.Evaluate();
         if (session == null || elements == null)
         {
             return;
