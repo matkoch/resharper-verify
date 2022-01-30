@@ -1,3 +1,4 @@
+using System;
 using JetBrains.Application.DataContext;
 using JetBrains.Application.UI.ActionSystem.ActionsRevised.Menu;
 using JetBrains.DocumentModel.DataContext;
@@ -8,6 +9,8 @@ using JetBrains.ReSharper.UnitTestFramework.Criteria;
 using JetBrains.ReSharper.UnitTestFramework.Execution;
 using JetBrains.ReSharper.UnitTestFramework.Persistence;
 using JetBrains.ReSharper.UnitTestFramework.Session;
+using JetBrains.Util;
+using VerifyTests.ExceptionParsing;
 
 public static class Extensions
 {
@@ -15,6 +18,22 @@ public static class Extensions
     {
         return result.ExceptionChunks > 1 &&
                result.GetExceptionChunk(0) == "VerifyException";
+    }
+
+    public static Result GetParseResult(this UnitTestResultData result)
+    {
+        var exceptionLines = result.GetExceptionChunk(2).SplitByNewLine();
+        try
+        {
+            return Parser.Parse(exceptionLines);
+        }
+        catch (Exception exception)
+        {
+            MessageBox.ShowError(
+                exception.Message +
+                "\n\nNote that you might need to rerun tests before your changes take effect.");
+            return default;
+        }
     }
 
     public static IUnitTestSession GetTestSession(this IDataContext context)

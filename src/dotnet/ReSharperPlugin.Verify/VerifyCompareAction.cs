@@ -74,9 +74,10 @@ public class VerifyCompareAction :
                 continue;
             }
 
-            var exceptionLines = result.GetExceptionChunk(2).SplitByNewLine();
+            var parsed = result.GetParseResult();
+            if (parsed.Equals(default(Result)))
+                return;
 
-            var parsed = Parser.Parse(exceptionLines);
             var files = parsed.New.Concat(parsed.NotEqual);
 #if RIDER
             var verifyTestsModel = context.GetComponent<ISolution>().GetProtocolSolution().GetVerifyModel();

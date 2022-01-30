@@ -71,8 +71,9 @@ public class VerifyAcceptAction :
                 continue;
             }
 
-            var exceptionLines = result.GetExceptionChunk(2).SplitByNewLine();
-            var parsed = Parser.Parse(exceptionLines);
+            var parsed = result.GetParseResult();
+            if (parsed.Equals(default(Result)))
+                return;
 
             foreach (var file in parsed.New.Concat(parsed.NotEqual))
             {
