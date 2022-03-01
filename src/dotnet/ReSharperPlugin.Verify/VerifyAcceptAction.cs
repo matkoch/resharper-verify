@@ -36,7 +36,7 @@ public class VerifyAcceptAction :
     public bool Update(IDataContext context, ActionPresentation presentation, DelegateUpdate nextUpdate)
     {
         var session = context.GetData(UnitTestDataConstants.Session.CURRENT);
-        var elements = context.GetData(UnitTestDataConstants.Elements.SELECTED)?.Criterion.Evaluate();
+        var elements = context.GetData(UnitTestDataConstants.Elements.IN_CONTEXT)?.Criterion.Evaluate();
         if (session == null || elements == null)
         {
             return false;
@@ -61,7 +61,7 @@ public class VerifyAcceptAction :
     public void Execute(IDataContext context, DelegateExecute nextExecute)
     {
         var session = context.GetData(UnitTestDataConstants.Session.CURRENT);
-        var elements = context.GetData(UnitTestDataConstants.Elements.SELECTED)?.Criterion.Evaluate();
+        var elements = context.GetData(UnitTestDataConstants.Elements.IN_CONTEXT)?.Criterion.Evaluate();
         if (session == null || elements == null)
         {
             return;

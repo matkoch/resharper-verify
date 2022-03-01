@@ -1,4 +1,5 @@
 using System;
+using JetBrains.ReSharper.TestRunner.Abstractions.Extensions;
 using JetBrains.ReSharper.UnitTestFramework.Execution;
 using JetBrains.Util;
 using VerifyTests.ExceptionParsing;
@@ -7,13 +8,12 @@ public static class Extensions
 {
     public static bool HasVerifyException(this UnitTestResultData result)
     {
-        return result.ExceptionChunks > 1 &&
-               result.GetExceptionChunk(0) == "VerifyException";
+        return result.GetExceptionInfo(0).Type == "VerifyException";
     }
 
     public static Result GetParseResult(this UnitTestResultData result)
     {
-        var exceptionLines = result.GetExceptionChunk(2).SplitByNewLine();
+        var exceptionLines = result.GetExceptionInfo(0).Message.NotNull().SplitByNewLine();
         try
         {
             return Parser.Parse(exceptionLines);
