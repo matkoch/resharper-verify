@@ -6,15 +6,13 @@ using JetBrains.Application.UI.ActionSystem.ActionsRevised.Menu;
 using JetBrains.DocumentModel.DataContext;
 using JetBrains.ReSharper.Feature.Services.Actions;
 using JetBrains.ReSharper.Psi.Files;
-using JetBrains.ReSharper.UnitTestFramework.Actions;
-using JetBrains.ReSharper.UnitTestFramework.Criteria;
-using JetBrains.ReSharper.UnitTestFramework.Execution;
-using VerifyTests.ExceptionParsing;
+using System.IO;
 #if RESHARPER
 using DiffEngine;
 using JetBrains.ReSharper.UnitTestExplorer.Session.Actions;
 using JetBrains.ReSharper.UnitTestFramework.UI.Session.Actions;
 #elif RIDER
+using DiffEngine;
 using JetBrains.ProjectModel;
 using JetBrains.RdBackend.Common.Features;
 #endif
@@ -31,70 +29,53 @@ public class VerifyCompareAction :
 {
     public IActionRequirement GetRequirement(IDataContext dataContext)
     {
-        return dataContext.GetData(DocumentModelDataConstants.DOCUMENT) != null 
+        return dataContext.GetData(DocumentModelDataConstants.DOCUMENT) != null
             ? CurrentPsiFileRequirement.FromDataContext(dataContext)
             : CommitAllDocumentsRequirement.TryGetInstance(dataContext);
     }
 
     public bool Update(IDataContext context, ActionPresentation presentation, DelegateUpdate nextUpdate)
     {
-        var session = context.GetData(UnitTestDataConstants.Session.CURRENT);
-        var elements = context.GetData(UnitTestDataConstants.Elements.IN_CONTEXT)?.Criterion.Evaluate();
-        if (session == null || elements == null)
-        {
-            return false;
-        }
-
-        var resultManager = context.GetComponent<IUnitTestResultManager>();
-
-        foreach (var element in elements)
-        {
-            var result = resultManager.GetResultData(element, session);
-            if (!result.HasVerifyException())
-            {
-                continue;
-            }
-
-            return true;
-        }
-
-        return false;
+        return context.HasPendingCompare();
     }
 
     public void Execute(IDataContext context, DelegateExecute nextExecute)
     {
-        var session = context.GetData(UnitTestDataConstants.Session.CURRENT);
-        var elements = context.GetData(UnitTestDataConstants.Elements.IN_CONTEXT)?.Criterion.Evaluate();
-        if (session == null || elements == null)
+        foreach (var (result, element) in context.GetVerifyResults())
         {
-            return;
-        }
-
-        var resultManager = context.GetComponent<IUnitTestResultManager>();
-
-        foreach (var element in elements)
-        {
-            var result = resultManager.GetResultData(element, session);
-            if (!result.HasVerifyException())
-            {
-                continue;
-            }
-
-            var parsed = result.GetParseResult();
-            if (parsed.Equals(default(Result)))
-                return;
-
-            var files = parsed.New.Concat(parsed.NotEqual);
+            var files = result.New.Concat(result.NotEqual);
 #if RIDER
             var verifyTestsModel = context.GetComponent<ISolution>().GetProtocolSolution().GetVerifyModel();
             var presentation = element.GetPresentation();
             foreach (var file in files)
             {
-                verifyTestsModel.Compare.Fire(new CompareData(presentation, file.Received, file.Verified));
+                if (!File.Exists(file.Received))
+                {
+                    continue;
+                }
+
+                if (EmptyFiles.Extensions.IsText(file.Received))
+                {
+                    if (!File.Exists(file.Verified))
+                    {
+                        File.WriteAllText(file.Verified, "");
+                    }
+
+                    verifyTestsModel.Compare.Fire(new CompareData(presentation, file.Received, file.Verified));
+                }
+                else
+                {
+                    DiffRunner.Launch(file.Received, file.Verified);
+                }
             }
 #else
             foreach (var file in files)
             {
+                if (!File.Exists(file.Received))
+                {
+                    continue;
+                }
+
                 DiffRunner.Launch(file.Received, file.Verified);
             }
 #endif

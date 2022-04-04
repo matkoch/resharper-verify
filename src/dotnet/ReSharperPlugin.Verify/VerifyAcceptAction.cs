@@ -7,10 +7,7 @@ using JetBrains.Application.UI.ActionSystem.ActionsRevised.Menu;
 using JetBrains.DocumentModel.DataContext;
 using JetBrains.ReSharper.Feature.Services.Actions;
 using JetBrains.ReSharper.Psi.Files;
-using JetBrains.ReSharper.UnitTestFramework.Actions;
-using JetBrains.ReSharper.UnitTestFramework.Criteria;
 using JetBrains.ReSharper.UnitTestFramework.Execution;
-using VerifyTests.ExceptionParsing;
 #if RESHARPER
 using JetBrains.ReSharper.UnitTestExplorer.Session.Actions;
 using JetBrains.ReSharper.UnitTestFramework.UI.Session.Actions;
@@ -28,60 +25,22 @@ public class VerifyAcceptAction :
 {
     public IActionRequirement GetRequirement(IDataContext dataContext)
     {
-        return dataContext.GetData(DocumentModelDataConstants.DOCUMENT) != null 
+        return dataContext.GetData(DocumentModelDataConstants.DOCUMENT) != null
             ? CurrentPsiFileRequirement.FromDataContext(dataContext)
             : CommitAllDocumentsRequirement.TryGetInstance(dataContext);
     }
 
     public bool Update(IDataContext context, ActionPresentation presentation, DelegateUpdate nextUpdate)
     {
-        var session = context.GetData(UnitTestDataConstants.Session.CURRENT);
-        var elements = context.GetData(UnitTestDataConstants.Elements.IN_CONTEXT)?.Criterion.Evaluate();
-        if (session == null || elements == null)
-        {
-            return false;
-        }
-
-        var resultManager = context.GetComponent<IUnitTestResultManager>();
-
-        foreach (var element in elements)
-        {
-            var result = resultManager.GetResultData(element, session);
-            if (!result.HasVerifyException())
-            {
-                continue;
-            }
-
-            return true;
-        }
-
-        return false;
+        return context.HasPendingAccept();
     }
 
     public void Execute(IDataContext context, DelegateExecute nextExecute)
     {
-        var session = context.GetData(UnitTestDataConstants.Session.CURRENT);
-        var elements = context.GetData(UnitTestDataConstants.Elements.IN_CONTEXT)?.Criterion.Evaluate();
-        if (session == null || elements == null)
-        {
-            return;
-        }
-
         var resultManager = context.GetComponent<IUnitTestResultManager>();
-
-        foreach (var element in elements)
+        foreach (var (result, element) in context.GetVerifyResults())
         {
-            var result = resultManager.GetResultData(element, session);
-            if (!result.HasVerifyException())
-            {
-                continue;
-            }
-
-            var parsed = result.GetParseResult();
-            if (parsed.Equals(default(Result)))
-                return;
-
-            foreach (var file in parsed.New.Concat(parsed.NotEqual))
+            foreach (var file in result.New.Concat(result.NotEqual))
             {
                 if (File.Exists(file.Verified))
                 {
@@ -91,7 +50,7 @@ public class VerifyAcceptAction :
                 File.Move(file.Received, file.Verified);
             }
 
-            foreach (var file in parsed.Delete)
+            foreach (var file in result.Delete)
             {
                 File.Delete(file);
             }
