@@ -25,6 +25,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="Verify.ExceptionParsing" Version="16.5.4" PrivateAssets="all" />
+    <PackageReference Include="EmptyFiles" Version="2.8.0" PrivateAssets="all" />
   </ItemGroup>
 
 </Project>
