@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="..\..\..\third-party-libraries.json" PackagePath="" Pack="true" />
     <Content Include="bin\$(AssemblyName)\$(Configuration)\$(AssemblyName).dll" PackagePath="dotFiles" Pack="true" />
     <Content Include="bin\$(AssemblyName)\$(Configuration)\$(AssemblyName).pdb" PackagePath="dotFiles" Pack="true" />
     <Content Include="bin\$(AssemblyName)\$(Configuration)\DiffEngine.dll" PackagePath="dotFiles" Pack="true" />
