@@ -16,7 +16,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DiffEngine" Version="9.0.6" PrivateAssets="all" />
     <PackageReference Include="JetBrains.Rider.SDK" Version="$(SdkVersion)" />
   </ItemGroup>
   <!-- TODO: uncomment for xaml icons -->
