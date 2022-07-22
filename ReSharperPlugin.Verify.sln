@@ -14,6 +14,7 @@ ProjectSection(SolutionItems) = preProject
 	src\rider\main\resources\META-INF\plugin.xml = src\rider\main\resources\META-INF\plugin.xml
 	gradle.properties = gradle.properties
 	build.gradle = build.gradle
+	src\dotnet\Directory.Build.props = src\dotnet\Directory.Build.props
 EndProjectSection
 EndProject
 Global
