@@ -1,17 +1,17 @@
 [
   {
     "name": "DiffEngine",
-    "version": "9.0.6",
+    "version": "9.1.0",
     "url": "https://github.com/VerifyTests/DiffEngine",
     "license": "MIT",
-    "licenseUrl": "https://github.com/VerifyTests/DiffEngine/blob/9.0.6/license.txt"
+    "licenseUrl": "https://github.com/VerifyTests/DiffEngine/blob/9.1.0/license.txt"
   },
   {
     "name": "Verify.ExceptionParsing",
-    "version": "17.1.6",
+    "version": "17.5.0",
     "url": "https://github.com/VerifyTests/Verify",
     "license": "MIT",
-    "licenseUrl": "https://github.com/VerifyTests/Verify/blob/17.1.6/license.txt"
+    "licenseUrl": "https://github.com/VerifyTests/Verify/blob/17.5.0/license.txt"
   },
   {
     "name": "EmptyFiles",
