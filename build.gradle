@@ -179,7 +179,7 @@ prepareSandbox {
             // TODO: add additional assemblies
     ]
 
-    from("third-party-libraries.json", { into "${rootProject.name}" })
+    from("dependencies.json", { into "${rootProject.name}" })
     dllFiles.forEach({ f ->
         def file = file(f)
         from(file, { into "${rootProject.name}/dotnet" })
