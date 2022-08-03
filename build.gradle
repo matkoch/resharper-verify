@@ -29,6 +29,10 @@ wrapper {
 
 version = ext.PluginVersion
 
+tasks.named("processResources") {
+    from("dependencies.json", { into "META-INF" })
+}
+
 sourceSets {
     main {
         java.srcDir 'src/rider/main/java'
@@ -179,7 +183,6 @@ prepareSandbox {
             // TODO: add additional assemblies
     ]
 
-    from("dependencies.json", { into "${rootProject.name}" })
     dllFiles.forEach({ f ->
         def file = file(f)
         from(file, { into "${rootProject.name}/dotnet" })
