@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Application.DataContext;
 using JetBrains.Application.UI.Actions;
@@ -7,6 +9,7 @@ using JetBrains.DocumentModel.DataContext;
 using JetBrains.ReSharper.Feature.Services.Actions;
 using JetBrains.ReSharper.Psi.Files;
 using System.IO;
+using VerifyTests.ExceptionParsing;
 #if RESHARPER
 using DiffEngine;
 using JetBrains.ReSharper.UnitTestExplorer.Session.Actions;
@@ -41,6 +44,8 @@ public class VerifyCompareAction :
 
     public void Execute(IDataContext context, DelegateExecute nextExecute)
     {
+        using var diffRunnerWithResultCollection = new DiffRunnerWithResultCollection();
+        
         foreach (var (result, element) in context.GetVerifyResults())
         {
             var files = result.New.Concat(result.NotEqual);
@@ -65,7 +70,7 @@ public class VerifyCompareAction :
                 }
                 else
                 {
-                    DiffRunner.Launch(file.Received, file.Verified);
+                    diffRunnerWithResultCollection.LaunchDiffAndRecordResult(file);
                 }
             }
 #else
@@ -76,9 +81,88 @@ public class VerifyCompareAction :
                     continue;
                 }
 
-                DiffRunner.Launch(file.Received, file.Verified);
+                diffRunnerWithResultCollection.LaunchDiffAndRecordResult(file);
             }
 #endif
         }
+    }
+
+    class DiffRunnerWithResultCollection : IDisposable
+    {
+        readonly List<Result> results = new List<Result>();
+
+        public void LaunchDiffAndRecordResult(FilePair filePair)
+        {
+            results.Add(
+                new Result(
+                    filePair,
+                    DiffRunner.Launch(filePair.Received, filePair.Verified)));
+        }
+
+        public void Dispose()
+        {
+            AssertDiffsLaunchedSuccessfully(results);
+        }
+        
+        static void AssertDiffsLaunchedSuccessfully(IEnumerable<Result> results)
+        {
+            var errors = results
+                .Where(x => x.IsError)
+                .ToList();
+
+            if (errors.Any())
+            {
+                throw new Exception(
+                    CreateExceptionMessage(
+                        errors));
+            }
+        }
+
+        private static string CreateExceptionMessage(IEnumerable<Result> errors)
+        {
+            var errorMessages = errors.Select(error =>
+                FormattableString.Invariant(
+                    $"Failed to launch diff viewer. Error: {error.LaunchResult}. File: {error.FilePair.Received}"));
+            return string.Join(
+                Environment.NewLine,
+                errorMessages);
+        }
+
+        private record Result(
+            FilePair FilePair,
+            LaunchResult LaunchResult)
+        {
+            public bool IsError { get; } = IsError(LaunchResult);
+        }
+    }
+
+    public static bool IsError(LaunchResult launchResult)
+    {
+        var successResults = new[]
+        {
+            LaunchResult.Disabled,
+            LaunchResult.StartedNewInstance,
+            LaunchResult.AlreadyRunningAndSupportsRefresh
+        };
+
+        var errorResults = new[]
+        {
+            LaunchResult.NoEmptyFileForExtension,
+            LaunchResult.NoDiffToolFound,
+            LaunchResult.TooManyRunningDiffTools
+        };
+
+        if (successResults.Contains(launchResult))
+        {
+            return false;
+        }
+
+        if (errorResults.Contains(launchResult))
+        {
+            return true;
+        }
+
+        throw new Exception(
+            FormattableString.Invariant($"Unknown {nameof(LaunchResult)} with value {launchResult}"));
     }
 }
