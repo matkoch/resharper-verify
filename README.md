@@ -13,4 +13,14 @@
 - _Compare Received/Verified_ action in test context menu to compare last received and verified snapshot with the preferred [diff engine](https://github.com/VerifyTests/DiffEngine#supported-tools)
 - Actions support multi-selection
 
-![Verify Support features](features.gif)
+![Verify Support features](doc/features.gif)
+
+## Customization
+
+By default, Verify will open the diff tool automatically when a test fails. If you prefer using this plugin to review failed tests, you can set the `DiffEngine_Disabled` environment variable to `true` in the Unit Test Runner options:
+
+- ReSharper: Options -> Tools -> Unit Testing -> Test Runner
+- Rider: Settings -> Build, Execution, Deployment -> Unit Testing -> Test Runner
+
+![ReSharper Settings](doc/env-settings-resharper.png)
+![Rider Settings](doc/env-settings-rider.png)
