@@ -83,7 +83,7 @@ public static class Extensions
             }
         }
     }
-    
+
     private static bool HasVerifyException(this UnitTestResultData result)
     {
         var info = result.GetExceptionInfo(0);
