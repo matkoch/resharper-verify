@@ -7,12 +7,11 @@ using JetBrains.DocumentModel.DataContext;
 using JetBrains.ReSharper.Feature.Services.Actions;
 using JetBrains.ReSharper.Psi.Files;
 using System.IO;
-#if RESHARPER
 using DiffEngine;
+#if RESHARPER
 using JetBrains.ReSharper.UnitTestExplorer.Session.Actions;
 using JetBrains.ReSharper.UnitTestFramework.UI.Session.Actions;
 #elif RIDER
-using DiffEngine;
 using JetBrains.ProjectModel;
 using JetBrains.RdBackend.Common.Features;
 #endif
