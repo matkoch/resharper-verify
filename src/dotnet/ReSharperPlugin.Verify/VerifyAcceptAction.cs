@@ -4,9 +4,6 @@ using JetBrains.Application.DataContext;
 using JetBrains.Application.UI.Actions;
 using JetBrains.Application.UI.ActionsRevised.Menu;
 using JetBrains.Application.UI.ActionSystem.ActionsRevised.Menu;
-using JetBrains.DocumentModel.DataContext;
-using JetBrains.ReSharper.Feature.Services.Actions;
-using JetBrains.ReSharper.Psi.Files;
 using JetBrains.ReSharper.UnitTestFramework.Execution;
 #if RESHARPER
 using JetBrains.ReSharper.UnitTestExplorer.Session.Actions;
@@ -23,17 +20,11 @@ public class VerifyAcceptAction :
     IExecutableAction,
     IActionWithUpdateRequirement
 {
-    public IActionRequirement GetRequirement(IDataContext dataContext)
-    {
-        return dataContext.GetData(DocumentModelDataConstants.DOCUMENT) != null
-            ? CurrentPsiFileRequirement.FromDataContext(dataContext)
-            : CommitAllDocumentsRequirement.TryGetInstance(dataContext);
-    }
+    public IActionRequirement GetRequirement(IDataContext dataContext) =>
+        dataContext.GetRequirement();
 
-    public bool Update(IDataContext context, ActionPresentation presentation, DelegateUpdate nextUpdate)
-    {
-        return context.HasPendingAccept();
-    }
+    public bool Update(IDataContext context, ActionPresentation presentation, DelegateUpdate nextUpdate) =>
+        context.HasPendingAccept();
 
     public void Execute(IDataContext context, DelegateExecute nextExecute)
     {

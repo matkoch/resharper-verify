@@ -3,9 +3,6 @@ using JetBrains.Application.DataContext;
 using JetBrains.Application.UI.Actions;
 using JetBrains.Application.UI.ActionsRevised.Menu;
 using JetBrains.Application.UI.ActionSystem.ActionsRevised.Menu;
-using JetBrains.DocumentModel.DataContext;
-using JetBrains.ReSharper.Feature.Services.Actions;
-using JetBrains.ReSharper.Psi.Files;
 using System.IO;
 using DiffEngine;
 #if RESHARPER
@@ -26,17 +23,11 @@ public class VerifyCompareAction :
     IExecutableAction,
     IActionWithUpdateRequirement
 {
-    public IActionRequirement GetRequirement(IDataContext dataContext)
-    {
-        return dataContext.GetData(DocumentModelDataConstants.DOCUMENT) != null
-            ? CurrentPsiFileRequirement.FromDataContext(dataContext)
-            : CommitAllDocumentsRequirement.TryGetInstance(dataContext);
-    }
+    public IActionRequirement GetRequirement(IDataContext dataContext) =>
+        dataContext.GetRequirement();
 
-    public bool Update(IDataContext context, ActionPresentation presentation, DelegateUpdate nextUpdate)
-    {
-        return context.HasPendingCompare();
-    }
+    public bool Update(IDataContext context, ActionPresentation presentation, DelegateUpdate nextUpdate) =>
+        context.HasPendingCompare();
 
     public void Execute(IDataContext context, DelegateExecute nextExecute)
     {

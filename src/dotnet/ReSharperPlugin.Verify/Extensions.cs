@@ -3,6 +3,10 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Application.DataContext;
+using JetBrains.Application.UI.ActionSystem.ActionsRevised.Menu;
+using JetBrains.DocumentModel.DataContext;
+using JetBrains.ReSharper.Feature.Services.Actions;
+using JetBrains.ReSharper.Psi.Files;
 using JetBrains.ReSharper.UnitTestFramework.Actions;
 using JetBrains.ReSharper.UnitTestFramework.Criteria;
 using JetBrains.ReSharper.UnitTestFramework.Elements;
@@ -12,6 +16,16 @@ using VerifyTests.ExceptionParsing;
 
 public static class Extensions
 {
+    public static IActionRequirement GetRequirement(this IDataContext dataContext)
+    {
+        if (dataContext.GetData(DocumentModelDataConstants.DOCUMENT) == null)
+        {
+            return CommitAllDocumentsRequirement.TryGetInstance(dataContext);
+        }
+
+        return CurrentPsiFileRequirement.FromDataContext(dataContext);
+    }
+
     public static bool HasPendingCompare(this IDataContext context)
     {
         foreach (var (result, _) in context.GetVerifyResults())
