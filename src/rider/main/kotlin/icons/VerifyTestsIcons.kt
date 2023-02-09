@@ -11,7 +11,7 @@ class VerifyIcons {
     companion object {
         // Themed icon by naming convention (XXX_dark)
         // https://jetbrains.design/intellij/resources/icons_list/
-        @JvmField val CompareIcon = IconLoader.getIcon("/icons/compare.svg")
-        @JvmField val AcceptIcon = IconLoader.getIcon("/icons/accept.svg")
+        @JvmField val CompareIcon = IconLoader.getIcon("/icons/compare.svg", VerifyIcons::class.java)
+        @JvmField val AcceptIcon = IconLoader.getIcon("/icons/accept.svg", VerifyIcons::class.java)
     }
 }
