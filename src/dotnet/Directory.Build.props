@@ -25,9 +25,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All" />
 
-    <PackageReference Include="DiffEngine" Version="10.4.1" PrivateAssets="all" />
-    <PackageReference Include="EmptyFiles" Version="3.0.0" PrivateAssets="all" />
-    <PackageReference Include="Verify.ExceptionParsing" Version="18.0.0" PrivateAssets="all" />
+    <PackageReference Include="DiffEngine" Version="11.1.0" PrivateAssets="all" />
+    <PackageReference Include="EmptyFiles" Version="4.2.0" PrivateAssets="all" />
+    <PackageReference Include="Verify.ExceptionParsing" Version="19.10.0" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
