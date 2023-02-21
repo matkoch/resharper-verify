@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## vNext
 - Added support for ReSharper and Rider 2023.1
+- Fixed actions for parent unit test elements
 
 ## 2022.3.0
 - Added support for ReSharper and Rider 2022.3

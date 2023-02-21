@@ -100,6 +100,9 @@ public static class Extensions
 
     private static bool HasVerifyException(this UnitTestResultData result)
     {
+        if (result.ExceptionCount == 0)
+            return false;
+
         var info = result.GetExceptionInfo(0);
         return info.Type == "VerifyException" ||
                (info.Message?.StartsWith("VerifyException") ?? false);
