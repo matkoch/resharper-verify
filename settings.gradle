@@ -17,6 +17,6 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'verify'
+rootProject.name = 'ReSharperPlugin.Verify'
 
 include ':protocol'
