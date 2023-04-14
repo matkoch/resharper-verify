@@ -105,7 +105,9 @@ public static class Extensions
 
         var info = result.GetExceptionInfo(0);
         return info.Type == "VerifyException" ||
-               (info.Message?.StartsWith("VerifyException") ?? false);
+               (info.Message?.StartsWith("VerifyException") ?? false) ||
+               // MSTest
+               (info.Message?.Substring(info.Message.IndexOf('\n') + 1, 15) == "VerifyException");
     }
 
     private static Result GetParseResult(this UnitTestResultData result)

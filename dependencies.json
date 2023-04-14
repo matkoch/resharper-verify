@@ -8,10 +8,10 @@
   },
   {
     "name": "Verify.ExceptionParsing",
-    "version": "19.12.3",
+    "version": "20.3.2",
     "url": "https://github.com/VerifyTests/Verify",
     "license": "MIT",
-    "licenseUrl": "https://github.com/VerifyTests/Verify/blob/19.12.3/license.txt"
+    "licenseUrl": "https://github.com/VerifyTests/Verify/blob/20.3.2/license.txt"
   },
   {
     "name": "EmptyFiles",
