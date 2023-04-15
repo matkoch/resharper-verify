@@ -26,9 +26,9 @@
     <Reference Include="System.Xaml" />
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All" />
 
-    <PackageReference Include="DiffEngine" Version="10.4.1" PrivateAssets="all" />
-    <PackageReference Include="EmptyFiles" Version="3.0.0" PrivateAssets="all" />
-    <PackageReference Include="Verify.ExceptionParsing" Version="18.0.0" PrivateAssets="all" />
+    <PackageReference Include="DiffEngine" Version="11.3.0" PrivateAssets="all" />
+    <PackageReference Include="EmptyFiles" Version="4.4.0" PrivateAssets="all" />
+    <PackageReference Include="Verify.ExceptionParsing" Version="19.12.3" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
