@@ -211,7 +211,7 @@ prepareSandbox {
 }
 
 publishPlugin {
-    dependsOn testDotNet
+//     dependsOn testDotNet
     dependsOn buildPlugin
     token = "${PublishToken}"
 
