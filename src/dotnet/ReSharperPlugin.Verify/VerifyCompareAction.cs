@@ -10,7 +10,7 @@ using JetBrains.ReSharper.UnitTestExplorer.Session.Actions;
 using JetBrains.ReSharper.UnitTestFramework.UI.Session.Actions;
 #elif RIDER
 using JetBrains.ProjectModel;
-using JetBrains.RdBackend.Common.Features;
+using JetBrains.ReSharper.Feature.Services.Protocol;
 #endif
 
 namespace ReSharperPlugin.Verify;
