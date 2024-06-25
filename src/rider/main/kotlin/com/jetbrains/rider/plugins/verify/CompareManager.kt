@@ -12,7 +12,7 @@ import java.io.File
 
 class CompareManager(project: Project) : LifetimedProjectComponent(project) {
     init {
-        project.solution.verifyTestsModel.compare.advise(componentLifetime) { compareData ->
+        project.solution.verifyModel.compare.advise(componentLifetime) { compareData ->
             val receivedFile = File(compareData.receivedFile)
             val verifiedFile = File(compareData.verifiedFile)
 
