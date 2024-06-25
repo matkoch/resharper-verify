@@ -143,6 +143,7 @@ dependencies {
     intellijPlatform {
         rider(ProductVersion)
         jetbrainsRuntime()
+        instrumentationTools()
     }
 }
 
