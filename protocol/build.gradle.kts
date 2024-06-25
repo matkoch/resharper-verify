@@ -19,10 +19,11 @@ dependencies {
 }
 
 val DotnetPluginId: String by rootProject
+val RiderPluginId: String by rootProject
 
 rdgen {
     val csOutput = File(rootDir, "src/dotnet/${DotnetPluginId}/Rider")
-    val ktOutput = File(rootDir, "src/rider/main/kotlin/com/jetbrains/rider/plugins/verify")
+    val ktOutput = File(rootDir, "src/rider/main/kotlin/com/jetbrains/rider/plugins/${RiderPluginId.replace('.','/').toLowerCase()}")
 
     verbose = true
     packages = "model.rider"
