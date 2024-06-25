@@ -9,7 +9,9 @@ import com.jetbrains.rd.util.lifetime.*
 import com.jetbrains.rd.util.reactive.*
 import com.jetbrains.rd.util.string.*
 import com.jetbrains.rd.util.*
+import kotlin.time.Duration
 import kotlin.reflect.KClass
+import kotlin.jvm.JvmStatic
 
 
 
@@ -24,13 +26,15 @@ class VerifyModel private constructor(
     companion object : ISerializersOwner {
         
         override fun registerSerializersCore(serializers: ISerializers)  {
-            serializers.register(CompareData)
+            val classLoader = javaClass.classLoader
+            serializers.register(LazyCompanionMarshaller(RdId(540707090302080028), classLoader, "com.jetbrains.rider.plugins.verify.CompareData"))
         }
         
         
         
         
-        const val serializationHash = -2472762287443495641L
+        
+        const val serializationHash = -8460501441895752832L
         
     }
     override val serializersOwner: ISerializersOwner get() = VerifyModel
@@ -67,8 +71,10 @@ class VerifyModel private constructor(
         )
     }
     //contexts
+    //threading
+    override val extThreading: ExtThreadingKind get() = ExtThreadingKind.Default
 }
-val com.jetbrains.rd.ide.model.Solution.verifyTestsModel get() = getOrCreateExtension("verifyTestsModel", ::VerifyModel)
+val com.jetbrains.rd.ide.model.Solution.verifyModel get() = getOrCreateExtension("verifyModel", ::VerifyModel)
 
 
 
@@ -84,6 +90,7 @@ data class CompareData (
     
     companion object : IMarshaller<CompareData> {
         override val _type: KClass<CompareData> = CompareData::class
+        override val id: RdId get() = RdId(540707090302080028)
         
         @Suppress("UNCHECKED_CAST")
         override fun read(ctx: SerializationCtx, buffer: AbstractBuffer): CompareData  {
@@ -138,4 +145,5 @@ data class CompareData (
     }
     //deepClone
     //contexts
+    //threading
 }
