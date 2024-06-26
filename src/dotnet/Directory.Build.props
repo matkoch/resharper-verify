@@ -37,4 +37,10 @@
     <EmbeddedResource Include="*.DotSettings" />
   </ItemGroup>
 
+  <ItemDefinitionGroup>
+    <EmbeddedResource>
+      <Generator>JetResourceGenerator</Generator>
+    </EmbeddedResource>
+  </ItemDefinitionGroup>
+
 </Project>
