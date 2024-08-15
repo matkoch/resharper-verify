@@ -13,8 +13,8 @@ ProjectSection(SolutionItems) = preProject
 	CHANGELOG.md = CHANGELOG.md
 	src\rider\main\resources\META-INF\plugin.xml = src\rider\main\resources\META-INF\plugin.xml
 	gradle.properties = gradle.properties
-	build.gradle = build.gradle
 	src\dotnet\Directory.Build.props = src\dotnet\Directory.Build.props
+	build.gradle.kts = build.gradle.kts
 EndProjectSection
 EndProject
 Global
