@@ -56,5 +56,11 @@ namespace ReSharperPlugin.Verify {
                 return ResourceManager.GetString("VerifyCompareActionText", resourceCulture);
             }
         }
+        
+        internal static string VerifyOpenActionText {
+            get {
+                return ResourceManager.GetString("VerifyOpenActionText", resourceCulture);
+            }
+        }
     }
 }

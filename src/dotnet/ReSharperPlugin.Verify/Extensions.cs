@@ -66,6 +66,42 @@ public static class Extensions
         return false;
     }
 
+    public static IEnumerable<VirtualFileSystemPath> GetVerifiedFiles(this IDataContext context)
+    {
+        var session = context.GetData(UnitTestDataConstants.Session.CURRENT);
+        if (session == null)
+        {
+            yield break;
+        }
+
+        var elements = context.GetData(UnitTestDataConstants.Elements.IN_CONTEXT)?.Criterion.Evaluate();
+        if (elements == null)
+        {
+            yield break;
+        }
+
+        foreach (var element in elements)
+        {
+            var directory = element.GetProjectFiles()?.FirstOrDefault()?.Location.Parent;
+            if (directory == null)
+                continue;
+
+            var parent = element.TraverseAcross(x => x.Parent).Last().ShortName;
+            var name = element.ShortName
+                .Replace("(", "_")
+                .Replace(": ", "=")
+                .Replace(", ", "_")
+                .Replace("\"", string.Empty)
+                .Replace(")", string.Empty);
+            var verifiedFileName = $"{parent}.{name}.verified";
+
+            foreach (var file in directory.GetChildFiles(verifiedFileName + "*"))
+            {
+                yield return file;
+            }
+        }
+    }
+
     public static IEnumerable<(Result, IUnitTestElement)> GetVerifyResults(this IDataContext context)
     {
         var session = context.GetData(UnitTestDataConstants.Session.CURRENT);

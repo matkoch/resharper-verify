@@ -26,6 +26,9 @@
     <action id="VerifyCompare"
             class="com.jetbrains.rider.plugins.verify.VerifyCompareAction"
             text="Compare Received/Verified" description="Compare Received/Verified" />
+    <action id="VerifyOpen"
+            class="com.jetbrains.rider.plugins.verify.VerifyOpenAction"
+            text="Open Verified" description="Open Verified" />
 
     <!-- https://plugins.jetbrains.com/docs/intellij/working-with-custom-actions.html#setting-registration-attributes-manually -->
     <!-- https://upsource.jetbrains.com/dotnet-products/file/2e0079b2d06ee5b757178c603216742a15d95c9b/Rider/Frontend/rider/resources/META-INF/RiderUnitTesting.xml?nav=63052:63701:focused&line=789&preview=false -->
@@ -33,6 +36,7 @@
       <separator />
       <reference id="VerifyAccept" />
       <reference id="VerifyCompare" />
+      <reference id="VerifyOpen" />
       <separator />
       <add-to-group group-id="Rider.UnitTesting.SessionPopup" relative-to-action="RiderUnitTestOpenTestOutputInEditorAction" anchor="before"/>
 <!--      <add-to-group group-id="Rider.UnitTesting.LeftSessionToolbar" anchor="last"/>-->
