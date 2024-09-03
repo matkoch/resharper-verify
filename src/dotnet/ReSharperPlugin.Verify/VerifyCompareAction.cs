@@ -15,7 +15,10 @@ using JetBrains.ReSharper.Feature.Services.Protocol;
 
 namespace ReSharperPlugin.Verify;
 
-[Action("UnitTestSession.VerifyCompare", "Compare Received and Verified", Icon = typeof(VerifyThemedIcons.Verify))]
+[Action(
+    ResourceType: typeof(Resources),
+    TextResourceName: nameof(Resources.VerifyCompareActionText),
+    Icon = typeof(Icons.VerifyThemedIcons.VerifyCompare))]
 public class VerifyCompareAction :
 #if RESHARPER
     IInsertBefore<UnitTestSessionContextMenuActionGroup, UnitTestSessionAppendChildren>,

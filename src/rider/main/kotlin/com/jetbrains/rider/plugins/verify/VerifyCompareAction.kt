@@ -15,12 +15,11 @@ import com.jetbrains.rider.unitTesting.actions.targets.RiderUnitTestTarget
 import com.jetbrains.rider.unitTesting.actions.targets.RiderUnitTestTargetExecutor
 import com.jetbrains.rider.unitTesting.actions.targets.RiderUnitTestTargetOperation
 import com.jetbrains.rider.unitTesting.actions.targets.RiderUnitTestTargetScope
-import icons.VerifyIcons
 import java.io.File
 import javax.swing.Icon
 
 class VerifyCompareAction :
-    RiderUnitTestAnActionBase("UnitTestSession.VerifyCompare") {
+    RiderUnitTestAnActionBase("VerifyCompare") {
     override val target
         get() = RiderUnitTestTarget(
             RiderUnitTestTargetOperation.ElementManipulation,

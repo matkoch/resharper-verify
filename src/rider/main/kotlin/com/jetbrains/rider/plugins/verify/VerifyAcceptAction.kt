@@ -7,7 +7,7 @@ import com.jetbrains.rider.unitTesting.actions.targets.RiderUnitTestTargetOperat
 import com.jetbrains.rider.unitTesting.actions.targets.RiderUnitTestTargetScope
 
 class VerifyAcceptAction :
-    RiderUnitTestAnActionBase("UnitTestSession.VerifyAccept") {
+    RiderUnitTestAnActionBase("VerifyAccept") {
     override val target
         get() = RiderUnitTestTarget(
             RiderUnitTestTargetOperation.ElementManipulation,
@@ -16,4 +16,3 @@ class VerifyAcceptAction :
         )
 
 }
-

@@ -12,7 +12,10 @@ using JetBrains.ReSharper.UnitTestFramework.UI.Session.Actions;
 
 namespace ReSharperPlugin.Verify;
 
-[Action("UnitTestSession.VerifyAccept", "Accept Received", Icon = typeof(VerifyThemedIcons.Verify))]
+[Action(
+    ResourceType: typeof(Resources),
+    TextResourceName: nameof(Resources.VerifyAcceptActionText),
+    Icon = typeof(Icons.VerifyThemedIcons.VerifyAccept))]
 public class VerifyAcceptAction :
 #if RESHARPER
     IInsertBefore<UnitTestSessionContextMenuActionGroup, UnitTestSessionAppendChildren>,
