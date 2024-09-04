@@ -24,7 +24,7 @@ class CompareManager(project: Project) : LifetimedProjectComponent(project) {
 
             receivedContent.putUserData(DiffUserDataKeys.FORCE_READ_ONLY, true)
 
-            val request = SimpleDiffRequest(compareData.testName, verifiedContent, receivedContent, "Verified", "Received")
+            val request = SimpleDiffRequest(compareData.testName, receivedContent, verifiedContent, "Received", "Verified")
             DiffManager.getInstance().showDiff(project, request)
         }
     }
