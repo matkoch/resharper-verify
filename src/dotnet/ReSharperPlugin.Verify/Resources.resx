@@ -27,4 +27,7 @@
     <data name="VerifyOpenActionText" xml:space="preserve">
         <value>Open Verified</value>
     </data>
+    <data name="VerifyRerunActionText" xml:space="preserve">
+        <value>Accept Received + Rerun Tests</value>
+    </data>
 </root>

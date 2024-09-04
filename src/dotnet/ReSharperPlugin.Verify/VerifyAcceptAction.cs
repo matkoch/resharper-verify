@@ -16,7 +16,11 @@ namespace ReSharperPlugin.Verify;
     ResourceType: typeof(Resources),
     TextResourceName: nameof(Resources.VerifyAcceptActionText),
     Icon = typeof(Icons.VerifyThemedIcons.VerifyAccept))]
-public class VerifyAcceptAction :
+public class VerifyAcceptAction : VerifyAcceptActionBase
+{
+}
+
+public abstract class VerifyAcceptActionBase :
 #if RESHARPER
     IInsertBefore<UnitTestSessionContextMenuActionGroup, UnitTestSessionAppendChildren>,
 #endif
@@ -29,7 +33,7 @@ public class VerifyAcceptAction :
     public bool Update(IDataContext context, ActionPresentation presentation, DelegateUpdate nextUpdate) =>
         context.HasPendingAccept();
 
-    public void Execute(IDataContext context, DelegateExecute nextExecute)
+    public virtual void Execute(IDataContext context, DelegateExecute nextExecute)
     {
         var resultManager = context.GetComponent<IUnitTestResultManager>();
         foreach (var (result, element) in context.GetVerifyResults())
