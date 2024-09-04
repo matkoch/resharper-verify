@@ -4,7 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## vNext
+## 2024.2.1
+- Added action to accept and re-run
+- Added action to open verified files
+- Reverted to old diff view
+- Fixed dark mode icons
+
+## 2024.2.0
 - Added support for ReSharper and Rider 2024.2
 - Swapped diff view to have correct coloring for additions/deletions
 
