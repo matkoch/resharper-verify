@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::System.Windows.Markup.XmlnsDefinitionAttribute("urn:shemas-jetbrains-com:ui-application-icons-topozut-themed-icons", "JetBrains.UI.ThemedIcons")]
+[assembly: global::System.Windows.Markup.XmlnsDefinitionAttribute("urn:shemas-jetbrains-com:ui-application-icons-tuhopun-themed-icons", "JetBrains.UI.ThemedIcons")]
 
 namespace ReSharperPlugin.Verify.Icons
 {
@@ -25,27 +25,27 @@ namespace ReSharperPlugin.Verify.Icons
 	///	<para>It has two primary goals: load the icons of this assembly to be registered with <see cref="JetBrains.Application.Icons.IThemedIconManager"></see> so that they were WPF-accessible and theme-sensitive; and emit early-bound accessors for referencing icons in codebehind in a compile-time-validated manner.</para>
 	///	<h1>XAML</h1>
 	///	<para>For performance reasons, the icons are not individually exposed with application resources. There is a custom markup extension to bind an image source in markup.</para>
-	///	<para>To use an icon from XAML, set an <see cref="System.Windows.Media.ImageSource"></see> property to the <see cref="System.CodeDom.CodeTypeReference"></see> markup extension, which takes an icon identifier class (nested in <see cref="JetBrains.UI.ThemedIcons.TopozutThemedIconsThemedIcons"></see> class) as a parameter.</para>
+	///	<para>To use an icon from XAML, set an <see cref="System.Windows.Media.ImageSource"></see> property to the <see cref="System.CodeDom.CodeTypeReference"></see> markup extension, which takes an icon identifier class (nested in <see cref="JetBrains.UI.ThemedIcons.TuhopunThemedIconsThemedIcons"></see> class) as a parameter.</para>
 	///	<para>Example:</para>
-	///	<code>&lt;Image Source="{icons:ThemedIcon myres:TopozutThemedIconsThemedIcons+Trinity}" /&gt;</code>
+	///	<code>&lt;Image Source="{icons:ThemedIcon myres:TuhopunThemedIconsThemedIcons+Trinity}" /&gt;</code>
 	///	<h1>Attributes</h1>
 	///	<para>Sometimes you have to reference an icon from a type attriute when you're defining objects in code. Typical examples are Options pages and Tool Windows.</para>
-	///	<para>To avoid the use of string IDs which are not validated very well, we've emitted identifier classes to be used with <c>typeof()</c> expression, one per each icon. Use the attribute overload which takes a <see cref="System.Type"></see> for an image, and choose your icon class from nested classes in the <see cref="JetBrains.UI.ThemedIcons.TopozutThemedIconsThemedIcons"></see> class.</para>
+	///	<para>To avoid the use of string IDs which are not validated very well, we've emitted identifier classes to be used with <c>typeof()</c> expression, one per each icon. Use the attribute overload which takes a <see cref="System.Type"></see> for an image, and choose your icon class from nested classes in the <see cref="JetBrains.UI.ThemedIcons.TuhopunThemedIconsThemedIcons"></see> class.</para>
 	///	<para>Example:</para>
-	///	<code>[Item(Name="Sample", Icon=typeof(TopozutThemedIconsThemedIcons.Trinity))]</code>
+	///	<code>[Item(Name="Sample", Icon=typeof(TuhopunThemedIconsThemedIcons.Trinity))]</code>
 	///	<h1>CodeBehind</h1>
 	///	<para>In codebehind, we have two distinct tasks: (a) specify some icon in the APIs and (b) render icon images onscreen.</para>
-	///	<para>On the APIs stage you should only manipulate icon identifier objects (of type <see cref="JetBrains.UI.Icons.IconId"></see>, statically defined in <see cref="JetBrains.UI.ThemedIcons.TopozutThemedIconsThemedIcons"></see> in <c>Id</c> fields). Icon identifier classes (nested in <see cref="JetBrains.UI.ThemedIcons.TopozutThemedIconsThemedIcons"></see>) should be turned into icon identifier objects as early as possible. Rendering is about getting an <see cref="System.Windows.Media.ImageSource"></see> to assign to WPF, or <see cref="System.Drawing.Bitmap"></see> to use with GDI+ / Windows Forms.</para>
+	///	<para>On the APIs stage you should only manipulate icon identifier objects (of type <see cref="JetBrains.UI.Icons.IconId"></see>, statically defined in <see cref="JetBrains.UI.ThemedIcons.TuhopunThemedIconsThemedIcons"></see> in <c>Id</c> fields). Icon identifier classes (nested in <see cref="JetBrains.UI.ThemedIcons.TuhopunThemedIconsThemedIcons"></see>) should be turned into icon identifier objects as early as possible. Rendering is about getting an <see cref="System.Windows.Media.ImageSource"></see> to assign to WPF, or <see cref="System.Drawing.Bitmap"></see> to use with GDI+ / Windows Forms.</para>
 	///	<para>You should turn an identifier object into a rendered image as late as possible. The identifier is static and lightweight and does not depend on the current theme, while the image is themed and has to be loaded or generated/rasterized. You need an <see cref="JetBrains.Application.Icons.IThemedIconManager"></see> instance to get the image out of an icon identifier object. Once you got the image, you should take care to change it with theme changes — either by using a live image property, or by listening to the theme change event. See <see cref="JetBrains.Application.Icons.IThemedIconManager"></see> and its extensions for the related facilities.</para>
 	///	<para>Example:</para>
 	///	<code>// Getting IconId identifier object to use with APIs
-	///IconId iconid = TopozutThemedIconsThemedIcons.Trinity.Id;</code>
+	///IconId iconid = TuhopunThemedIconsThemedIcons.Trinity.Id;</code>
 	///	<code>// Getting IconId out of an Icon Identifier Class type
-	///IconId iconid = new JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsId(typeof(TopozutThemedIconsThemedIcons.Trinity));</code>
+	///IconId iconid = new JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsId(typeof(TuhopunThemedIconsThemedIcons.Trinity));</code>
 	///	<code>// Getting image for screen rendering by IconId
 	///themediconmanager.Icons[icnoid]</code>
 	///	<code>// Getting image for screen rendering by Icon Identifier Class
-	///themediconmanager.GetIcon&lt;TopozutThemedIconsThemedIcons.Trinity&gt;()</code>
+	///themediconmanager.GetIcon&lt;TuhopunThemedIconsThemedIcons.Trinity&gt;()</code>
 	///	<h1>Icons Origin</h1>
 	///	<para>This code was generated by a pre-compile build task from a set of input files which are XAML files adhering to a certain convention, as convenient for exporting them from the Illustrator workspace, plus separate PNG files with raster icons. In the projects, these files are designated with <c>ThemedIconsXamlV3</c> and <c>ThemedIconPng</c> build actions and do not themselves get into the output assembly. All of such files are processed, vector images for different themes of the same icon are split and combined into the single list of icons in this assembly. This list is then written into the genearted XAML file (compiled into BAML within assembly), and serves as the source for this generated code.</para>
 	///</remarks>
@@ -84,16 +84,16 @@ namespace ReSharperPlugin.Verify.Icons
 		///	<para>For details on Themed Icons and their use, see Remarks on the outer class.</para>
 		///</remarks>
 		///<example>
-		///	<code>&lt;Image Source="{icons:ThemedIcon myres:TopozutThemedIconsThemedIcons+VerifyAccept}" /&gt;        &lt;!-- XAML --&gt;</code>
+		///	<code>&lt;Image Source="{icons:ThemedIcon myres:TuhopunThemedIconsThemedIcons+VerifyAccept}" /&gt;        &lt;!-- XAML --&gt;</code>
 		///</example>
 		///<example>
-		///	<code>[Item(Name="Sample", Icon=typeof(TopozutThemedIconsThemedIcons.VerifyAccept))]        // C# Type attribute</code>
+		///	<code>[Item(Name="Sample", Icon=typeof(TuhopunThemedIconsThemedIcons.VerifyAccept))]        // C# Type attribute</code>
 		///</example>
 		///<example>
-		///	<code>IconId iconid = TopozutThemedIconsThemedIcons.VerifyAccept.Id;        // IconId identifier object</code>
+		///	<code>IconId iconid = TuhopunThemedIconsThemedIcons.VerifyAccept.Id;        // IconId identifier object</code>
 		///</example>
 		///<example>
-		///	<code>themediconmanager.GetIcon&lt;TopozutThemedIconsThemedIcons.VerifyAccept&gt;()        // Icon image for rendering</code>
+		///	<code>themediconmanager.GetIcon&lt;TuhopunThemedIconsThemedIcons.VerifyAccept&gt;()        // Icon image for rendering</code>
 		///</example>
 		[global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsAttribute()]
 		public sealed class VerifyAccept : global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsClass
@@ -286,16 +286,16 @@ namespace ReSharperPlugin.Verify.Icons
 		///	<para>For details on Themed Icons and their use, see Remarks on the outer class.</para>
 		///</remarks>
 		///<example>
-		///	<code>&lt;Image Source="{icons:ThemedIcon myres:TopozutThemedIconsThemedIcons+VerifyCompare}" /&gt;        &lt;!-- XAML --&gt;</code>
+		///	<code>&lt;Image Source="{icons:ThemedIcon myres:TuhopunThemedIconsThemedIcons+VerifyCompare}" /&gt;        &lt;!-- XAML --&gt;</code>
 		///</example>
 		///<example>
-		///	<code>[Item(Name="Sample", Icon=typeof(TopozutThemedIconsThemedIcons.VerifyCompare))]        // C# Type attribute</code>
+		///	<code>[Item(Name="Sample", Icon=typeof(TuhopunThemedIconsThemedIcons.VerifyCompare))]        // C# Type attribute</code>
 		///</example>
 		///<example>
-		///	<code>IconId iconid = TopozutThemedIconsThemedIcons.VerifyCompare.Id;        // IconId identifier object</code>
+		///	<code>IconId iconid = TuhopunThemedIconsThemedIcons.VerifyCompare.Id;        // IconId identifier object</code>
 		///</example>
 		///<example>
-		///	<code>themediconmanager.GetIcon&lt;TopozutThemedIconsThemedIcons.VerifyCompare&gt;()        // Icon image for rendering</code>
+		///	<code>themediconmanager.GetIcon&lt;TuhopunThemedIconsThemedIcons.VerifyCompare&gt;()        // Icon image for rendering</code>
 		///</example>
 		[global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsAttribute()]
 		public sealed class VerifyCompare : global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsClass
@@ -461,6 +461,488 @@ namespace ReSharperPlugin.Verify.Icons
 			}
 
 			/// <summary>Returns the set of theme images for Themed Icon VerifyCompare.</summary>
+			public override global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsIdOwner.ThemedIconThemeImage[] GetThemeImages()
+			{
+				return new global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsIdOwner.ThemedIconThemeImage[] {
+						new global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsIdOwner.ThemedIconThemeImage("Color", new global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsIdOwner.LoadImageDelegate(this.Load_Color)),
+						new global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsIdOwner.ThemedIconThemeImage("GrayDark", new global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsIdOwner.LoadImageDelegate(this.Load_GrayDark))};
+			}
+		}
+		#endregion
+
+		#region VerifyOpen
+		/// <summary>
+		///	<para>
+		///		<para>VerifyOpen Themed Icon generated identifiers:</para>
+		///		<para>— <see cref="VerifyOpen"></see> identifier class, for use in attributes, XAML, and generic parameters;</para>
+		///		<para>— <see cref="Id"></see> identifier object, as a field in the identifier class, for use where an <see cref="JetBrains.UI.Icons.IconId"></see> value is expected.</para>
+		///		<para>
+		///			<code>
+		///
+		///
+		///
+		///
+		///
+		///
+		///
+		///
+		///                  \XDD$Q0dj\-
+		///                  `ieFs{}aDQQk:
+		///                    ~|/;;;~;kQ$"
+		///                     J$QQQQE-uQf
+		///                    18QQQQQQ2!QT
+		///                   ,[X$QQQQQb!Q`
+		///                   ``DQQQ8jf["d-
+		///                    `8XJ,      :-
+		///</code>
+		///		</para>
+		///	</para>
+		///</summary>
+		///<remarks>
+		///	<para>For details on Themed Icons and their use, see Remarks on the outer class.</para>
+		///</remarks>
+		///<example>
+		///	<code>&lt;Image Source="{icons:ThemedIcon myres:TuhopunThemedIconsThemedIcons+VerifyOpen}" /&gt;        &lt;!-- XAML --&gt;</code>
+		///</example>
+		///<example>
+		///	<code>[Item(Name="Sample", Icon=typeof(TuhopunThemedIconsThemedIcons.VerifyOpen))]        // C# Type attribute</code>
+		///</example>
+		///<example>
+		///	<code>IconId iconid = TuhopunThemedIconsThemedIcons.VerifyOpen.Id;        // IconId identifier object</code>
+		///</example>
+		///<example>
+		///	<code>themediconmanager.GetIcon&lt;TuhopunThemedIconsThemedIcons.VerifyOpen&gt;()        // Icon image for rendering</code>
+		///</example>
+		[global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsAttribute()]
+		public sealed class VerifyOpen : global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsClass
+		{
+
+			/// <inheritdoc cref="VerifyOpen">identifier class</inheritdoc>
+			public static global::JetBrains.UI.Icons.IconId Id = new global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsId(typeof(VerifyOpen));
+
+			/// <summary>Loads the image for Themed Icon VerifyOpen theme aspect Color.</summary>
+			public global::JetBrains.Util.Icons.TiImage Load_Color()
+			{
+				return global::JetBrains.Util.Icons.TiImageConverter.FromTiSvg("<svg ti:v=\'1\' width=\'16\' height=\'16\' viewBox=\'0,0,16,16\' xmlns=\'http://www.w3.org" +
+						"/2000/svg\' xmlns:ti=\'urn:schemas-jetbrains-com:tisvg\'><g><path d=\'M9.5,12L2.5,12" +
+						"C2.2257081148225684,12,2,12.225708114822568,2,12.5L2,12.5C2,12.774291885177432,2" +
+						".2257081148225684,13,2.5,13L9.5,13C9.7742918851774316,13,10,12.774291885177432,1" +
+						"0,12.5L10,12.5C10,12.225708114822568,9.7742918851774316,12,9.5,12Z\' fill=\'#E66D1" +
+						"7\'/><path d=\'M9.5,6L2.5,6C2.2257081148225684,6,2,6.2257081148225684,2,6.5L2,6.5C" +
+						"2,6.7742918851774316,2.2257081148225684,7,2.5,7L9.5,7C9.7742918851774316,7,10,6." +
+						"7742918851774316,10,6.5L10,6.5C10,6.2257081148225684,9.7742918851774316,6,9.5,6Z" +
+						"\' fill=\'#E66D17\'/><path d=\'M13.5,9L2.5,9C2.2257081148225684,9,2,9.22570811482256" +
+						"84,2,9.5L2,9.5C2,9.7742918851774316,2.2257081148225684,10,2.5,10L13.5,10C13.7742" +
+						"91885177432,10,14,9.7742918851774316,14,9.5L14,9.5C14,9.2257081148225684,13.7742" +
+						"91885177432,9,13.5,9Z\' fill=\'#E66D17\'/><path d=\'M13.5,3L2.5,3C2.2257081148225684" +
+						",3,2,3.2257081148225684,2,3.5L2,3.5C2,3.7742918851774316,2.2257081148225684,4,2." +
+						"5,4L13.5,4C13.774291885177432,4,14,3.7742918851774316,14,3.5L14,3.5C14,3.2257081" +
+						"148225684,13.774291885177432,3,13.5,3Z\' fill=\'#E66D17\'/><path d=\'M15.90665324999" +
+						"9998,15.342573704C15.251136276,15.242502677,14.85101139,15.085589396,14.42963036" +
+						"7,14.552593751C14.309895423,14.346958537999999,14.275503470999999,14.13240689299" +
+						"9999,14.257989051,13.968806288C14.178855717,13.233837536,14.410046061,12.4846980" +
+						"26,14.326693343999999,11.804740475C14.229169869,11.010779972,13.646417349,10.351" +
+						"919336,13.021391387999998,9.950043008C12.254896679999998,9.457171307,11.27408915" +
+						"9999999,9.431775398,10.391362391999998,9.469670234C10.166063261999998,9.47954199" +
+						"8,9.9534222809999982,9.578737304,9.7359250289999988,9.620692301C9.65113931399999" +
+						"81,9.637012556,9.3136682849999985,9.758021276,9.2432125499999991,9.70977701L8.48" +
+						"74653269999989,8.4044750539999988C9.665071239,7.90897619,11.570401301999999,7.77" +
+						"7060763,12.849829683,8.301538031C14.104976708999999,8.815984313,15.1960454639999" +
+						"99,9.88571732,15.322786176,11.152248719C15.34858014,11.410586413999999,15.350650" +
+						"025999999,11.739220622,15.322786176,12.079557646999998C15.238796570999998,13.101" +
+						"046388,14.450488449,14.271646531999998,15.253922661,14.861723263999998C15.435993" +
+						"018,14.995628965999998,15.992314686,15.060671152999998,15.906653249999998,15.342" +
+						"573704ZM15.906653249999998,15.342573704\' fill=\'#1A1A1A\'/><path d=\'M14.1547335839" +
+						"99999,14.587065314C13.660269663,14.560316018,13.151077706999999,14.507454314,12." +
+						"780806945999998,14.587065314C12.558134979,14.634911525,12.311181656999999,14.823" +
+						"271151,12.094002848999999,14.964660287000001C11.470091442,15.371631719,10.875078" +
+						"828,15.884326558999998,9.895783917,15.9266C10.031520672,15.217186379,10.05667774" +
+						"8,14.144268932,9.964488209999999,13.28192258C10.165426373999999,13.1277956839999" +
+						"99,10.540792239,13.148016878,10.685684258999999,12.938401115C10.547559174,12.528" +
+						"484076,10.028097399,12.932669123,9.792767283,13.041497360000001C9.702249576,13.3" +
+						"56597698,9.6875215409999988,13.680057191,9.72406299,13.968806288C9.5486003459999" +
+						"989,13.999376911999999,9.428148903,14.084879126,9.2432125499999991,14.106294485C" +
+						"9.239709666,13.452210509,9.48045333,12.864999773000001,9.689671038,12.285750137C" +
+						"9.887026707,11.739220622000001,10.093935695999999,11.290214582,10.411026309,11.0" +
+						"83544426C10.937812296,10.724578427,12.038275149,10.617501632,12.677949534,10.843" +
+						"198817000001C13.085955908999999,10.986976283,13.471273149,11.398565153,13.639809" +
+						"635999999,11.736195404C14.01668811,12.492499904,13.605417683999999,13.895803001," +
+						"14.154733584,14.587065314ZM14.154733583999999,14.587065314\' fill=\'#1A1A1A\'/><pat" +
+						"h d=\'M10.463888012999998,10.730708474C10.457280299999999,10.735803577999999,10.4" +
+						"48921145,10.739386073,10.438651325999999,10.741296736999999C10.353945222,10.7569" +
+						"80104,10.239146159999999,10.615431745999999,10.178323356,10.570690364C10.0573146" +
+						"36,10.481685266,9.9363855269999988,10.392759779,9.815456418,10.303754681C9.67064" +
+						"4009,10.197155552,9.5258316,10.090636034,9.38093958,9.984036905C9.38093958,9.984" +
+						"036905,9.8281941779999986,9.751015508,10.170521478,9.743850518C10.24583348399999" +
+						"8,9.96293999,10.321225101,10.182109073,10.396537106999999,10.401278156C10.419863" +
+						"13,10.468947506,10.532592306,10.678005992,10.463888012999998,10.730708474ZM10.46" +
+						"3888012999998,10.730708474\' fill=\'#1A1A1A\'/><path d=\'M10.720076210999999,10.6713" +
+						"98279L10.479810212999999,9.6771365C10.479810212999999,9.6771365,10.697785131,9.6" +
+						"37649444,10.857484797,9.640833884L10.911381444,10.61256575ZM10.720076210999999,1" +
+						"0.671398279\' fill=\'#1A1A1A\'/><path d=\'M11.084694590999998,10.557952604L11.132222" +
+						"358,9.640833884L11.441511092999999,9.640833884L11.263102841999999,10.557952604ZM" +
+						"11.084694590999998,10.557952604\' fill=\'#1A1A1A\'/><path d=\'M11.475823433999999,10" +
+						".533989692999999L11.681936313,9.7439301289999989L11.922202311,9.778481303L11.627" +
+						"562,10.557952604ZM11.475823433999999,10.533989692999999\' fill=\'#1A1A1A\'/><path d" +
+						"=\'M11.917186818,10.533989692999999L12.125847249,9.809848037L12.33450768,9.915730" +
+						"667L11.992419213,10.557952604ZM11.917186818,10.533989692999999\' fill=\'#1A1A1A\'/>" +
+						"<path d=\'M12.265803387,10.568381644999999L12.540620559,9.984355349L12.712261875," +
+						"10.053059642L12.33450768,10.568381644999999ZM12.265803387,10.568381644999999\' fi" +
+						"ll=\'#1A1A1A\'/><path d=\'M12.60916563,10.671398279L12.883903190999998,10.156235498" +
+						"L13.021391387999998,10.224939790999999L12.669192323999999,10.676334161ZM12.60916" +
+						"563,10.671398279\' fill=\'#1A1A1A\'/><path d=\'M12.883903190999998,10.77839546299999" +
+						"9L13.153466037,10.293564473L13.296128949,10.396660718L12.921240749999999,10.8115" +
+						"9325ZM12.883903190999998,10.778395462999999\' fill=\'#1A1A1A\'/><path d=\'M13.090016" +
+						"069999999,10.860235571L13.433617146,10.499677351999999L13.467929487,10.605958036" +
+						"999999ZM13.090016069999999,10.860235571\' fill=\'#1A1A1A\'/><path d=\'M13.261896219," +
+						"11.03211572L13.571025731999999,10.740022961000001L13.651034787,10.81159325ZM13.2" +
+						"61896219,11.03211572\' fill=\'#1A1A1A\'/><path d=\'M13.433617146,11.117856767L13.717" +
+						"111917,10.886029534999999L13.750548537,11.001943150999999ZM13.433617146,11.11785" +
+						"6767\' fill=\'#1A1A1A\'/><path d=\'M13.575404336999998,11.255265352999999L13.7801638" +
+						"29,11.203757035999999L13.780163829,11.229471389L13.592043036,11.28925925ZM13.575" +
+						"404336999998,11.255265352999999\' fill=\'#1A1A1A\'/></g></svg>");
+			}
+
+			/// <summary>Loads the image for Themed Icon VerifyOpen theme aspect GrayDark.</summary>
+			public global::JetBrains.Util.Icons.TiImage Load_GrayDark()
+			{
+				return global::JetBrains.Util.Icons.TiImageConverter.FromTiSvg("<svg ti:v=\'1\' width=\'16\' height=\'16\' viewBox=\'0,0,16,16\' xmlns=\'http://www.w3.org" +
+						"/2000/svg\' xmlns:ti=\'urn:schemas-jetbrains-com:tisvg\'><g><path d=\'M9.5,12L2.5,12" +
+						"C2.2257081148225684,12,2,12.225708114822568,2,12.5L2,12.5C2,12.774291885177432,2" +
+						".2257081148225684,13,2.5,13L9.5,13C9.7742918851774316,13,10,12.774291885177432,1" +
+						"0,12.5L10,12.5C10,12.225708114822568,9.7742918851774316,12,9.5,12Z\' fill=\'#F2C55" +
+						"C\'/><path d=\'M9.5,6L2.5,6C2.2257081148225684,6,2,6.2257081148225684,2,6.5L2,6.5C" +
+						"2,6.7742918851774316,2.2257081148225684,7,2.5,7L9.5,7C9.7742918851774316,7,10,6." +
+						"7742918851774316,10,6.5L10,6.5C10,6.2257081148225684,9.7742918851774316,6,9.5,6Z" +
+						"\' fill=\'#F2C55C\'/><path d=\'M13.5,9L2.5,9C2.2257081148225684,9,2,9.22570811482256" +
+						"84,2,9.5L2,9.5C2,9.7742918851774316,2.2257081148225684,10,2.5,10L13.5,10C13.7742" +
+						"91885177432,10,14,9.7742918851774316,14,9.5L14,9.5C14,9.2257081148225684,13.7742" +
+						"91885177432,9,13.5,9Z\' fill=\'#F2C55C\'/><path d=\'M13.5,3L2.5,3C2.2257081148225684" +
+						",3,2,3.2257081148225684,2,3.5L2,3.5C2,3.7742918851774316,2.2257081148225684,4,2." +
+						"5,4L13.5,4C13.774291885177432,4,14,3.7742918851774316,14,3.5L14,3.5C14,3.2257081" +
+						"148225684,13.774291885177432,3,13.5,3Z\' fill=\'#F2C55C\'/><path d=\'M15.90665324999" +
+						"9998,15.342573704C15.251136276,15.242502677,14.85101139,15.085589396,14.42963036" +
+						"7,14.552593751C14.309895423,14.346958537999999,14.275503470999999,14.13240689299" +
+						"9999,14.257989051,13.968806288C14.178855717,13.233837536,14.410046061,12.4846980" +
+						"26,14.326693343999999,11.804740475C14.229169869,11.010779972,13.646417349,10.351" +
+						"919336,13.021391387999998,9.950043008C12.254896679999998,9.457171307,11.27408915" +
+						"9999999,9.431775398,10.391362391999998,9.469670234C10.166063261999998,9.47954199" +
+						"8,9.9534222809999982,9.578737304,9.7359250289999988,9.620692301C9.65113931399999" +
+						"81,9.637012556,9.3136682849999985,9.758021276,9.2432125499999991,9.70977701L8.48" +
+						"74653269999989,8.4044750539999988C9.665071239,7.90897619,11.570401301999999,7.77" +
+						"7060763,12.849829683,8.301538031C14.104976708999999,8.815984313,15.1960454639999" +
+						"99,9.88571732,15.322786176,11.152248719C15.34858014,11.410586413999999,15.350650" +
+						"025999999,11.739220622,15.322786176,12.079557646999998C15.238796570999998,13.101" +
+						"046388,14.450488449,14.271646531999998,15.253922661,14.861723263999998C15.435993" +
+						"018,14.995628965999998,15.992314686,15.060671152999998,15.906653249999998,15.342" +
+						"573704ZM15.906653249999998,15.342573704\' fill=\'#C4C4C4\'/><path d=\'M14.1547335839" +
+						"99999,14.587065314C13.660269663,14.560316018,13.151077706999999,14.507454314,12." +
+						"780806945999998,14.587065314C12.558134979,14.634911525,12.311181656999999,14.823" +
+						"271151,12.094002848999999,14.964660287000001C11.470091442,15.371631719,10.875078" +
+						"828,15.884326558999998,9.895783917,15.9266C10.031520672,15.217186379,10.05667774" +
+						"8,14.144268932,9.964488209999999,13.28192258C10.165426373999999,13.1277956839999" +
+						"99,10.540792239,13.148016878,10.685684258999999,12.938401115C10.547559174,12.528" +
+						"484076,10.028097399,12.932669123,9.792767283,13.041497360000001C9.702249576,13.3" +
+						"56597698,9.6875215409999988,13.680057191,9.72406299,13.968806288C9.5486003459999" +
+						"989,13.999376911999999,9.428148903,14.084879126,9.2432125499999991,14.106294485C" +
+						"9.239709666,13.452210509,9.48045333,12.864999773000001,9.689671038,12.285750137C" +
+						"9.887026707,11.739220622000001,10.093935695999999,11.290214582,10.411026309,11.0" +
+						"83544426C10.937812296,10.724578427,12.038275149,10.617501632,12.677949534,10.843" +
+						"198817000001C13.085955908999999,10.986976283,13.471273149,11.398565153,13.639809" +
+						"635999999,11.736195404C14.01668811,12.492499904,13.605417683999999,13.895803001," +
+						"14.154733584,14.587065314ZM14.154733583999999,14.587065314\' fill=\'#C4C4C4\'/><pat" +
+						"h d=\'M10.463888012999998,10.730708474C10.457280299999999,10.735803577999999,10.4" +
+						"48921145,10.739386073,10.438651325999999,10.741296736999999C10.353945222,10.7569" +
+						"80104,10.239146159999999,10.615431745999999,10.178323356,10.570690364C10.0573146" +
+						"36,10.481685266,9.9363855269999988,10.392759779,9.815456418,10.303754681C9.67064" +
+						"4009,10.197155552,9.5258316,10.090636034,9.38093958,9.984036905C9.38093958,9.984" +
+						"036905,9.8281941779999986,9.751015508,10.170521478,9.743850518C10.24583348399999" +
+						"8,9.96293999,10.321225101,10.182109073,10.396537106999999,10.401278156C10.419863" +
+						"13,10.468947506,10.532592306,10.678005992,10.463888012999998,10.730708474ZM10.46" +
+						"3888012999998,10.730708474\' fill=\'#C4C4C4\'/><path d=\'M10.720076210999999,10.6713" +
+						"98279L10.479810212999999,9.6771365C10.479810212999999,9.6771365,10.697785131,9.6" +
+						"37649444,10.857484797,9.640833884L10.911381444,10.61256575ZM10.720076210999999,1" +
+						"0.671398279\' fill=\'#C4C4C4\'/><path d=\'M11.084694590999998,10.557952604L11.132222" +
+						"358,9.640833884L11.441511092999999,9.640833884L11.263102841999999,10.557952604ZM" +
+						"11.084694590999998,10.557952604\' fill=\'#C4C4C4\'/><path d=\'M11.475823433999999,10" +
+						".533989692999999L11.681936313,9.7439301289999989L11.922202311,9.778481303L11.627" +
+						"562,10.557952604ZM11.475823433999999,10.533989692999999\' fill=\'#C4C4C4\'/><path d" +
+						"=\'M11.917186818,10.533989692999999L12.125847249,9.809848037L12.33450768,9.915730" +
+						"667L11.992419213,10.557952604ZM11.917186818,10.533989692999999\' fill=\'#C4C4C4\'/>" +
+						"<path d=\'M12.265803387,10.568381644999999L12.540620559,9.984355349L12.712261875," +
+						"10.053059642L12.33450768,10.568381644999999ZM12.265803387,10.568381644999999\' fi" +
+						"ll=\'#C4C4C4\'/><path d=\'M12.60916563,10.671398279L12.883903190999998,10.156235498" +
+						"L13.021391387999998,10.224939790999999L12.669192323999999,10.676334161ZM12.60916" +
+						"563,10.671398279\' fill=\'#C4C4C4\'/><path d=\'M12.883903190999998,10.77839546299999" +
+						"9L13.153466037,10.293564473L13.296128949,10.396660718L12.921240749999999,10.8115" +
+						"9325ZM12.883903190999998,10.778395462999999\' fill=\'#C4C4C4\'/><path d=\'M13.090016" +
+						"069999999,10.860235571L13.433617146,10.499677351999999L13.467929487,10.605958036" +
+						"999999ZM13.090016069999999,10.860235571\' fill=\'#C4C4C4\'/><path d=\'M13.261896219," +
+						"11.03211572L13.571025731999999,10.740022961000001L13.651034787,10.81159325ZM13.2" +
+						"61896219,11.03211572\' fill=\'#C4C4C4\'/><path d=\'M13.433617146,11.117856767L13.717" +
+						"111917,10.886029534999999L13.750548537,11.001943150999999ZM13.433617146,11.11785" +
+						"6767\' fill=\'#C4C4C4\'/><path d=\'M13.575404336999998,11.255265352999999L13.7801638" +
+						"29,11.203757035999999L13.780163829,11.229471389L13.592043036,11.28925925ZM13.575" +
+						"404336999998,11.255265352999999\' fill=\'#C4C4C4\'/></g></svg>");
+			}
+
+			/// <summary>Returns the set of theme images for Themed Icon VerifyOpen.</summary>
+			public override global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsIdOwner.ThemedIconThemeImage[] GetThemeImages()
+			{
+				return new global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsIdOwner.ThemedIconThemeImage[] {
+						new global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsIdOwner.ThemedIconThemeImage("Color", new global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsIdOwner.LoadImageDelegate(this.Load_Color)),
+						new global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsIdOwner.ThemedIconThemeImage("GrayDark", new global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsIdOwner.LoadImageDelegate(this.Load_GrayDark))};
+			}
+		}
+		#endregion
+
+		#region VerifyRerun
+		/// <summary>
+		///	<para>
+		///		<para>VerifyRerun Themed Icon generated identifiers:</para>
+		///		<para>— <see cref="VerifyRerun"></see> identifier class, for use in attributes, XAML, and generic parameters;</para>
+		///		<para>— <see cref="Id"></see> identifier object, as a field in the identifier class, for use where an <see cref="JetBrains.UI.Icons.IconId"></see> value is expected.</para>
+		///		<para>
+		///			<code>
+		///
+		///
+		///
+		///
+		///
+		///
+		///
+		///
+		///                  =UD#$$Ww2/'
+		///                  `Fe}J{Fk8$$k:
+		///                    ^c\;;;~;V$$"
+		///                     v$$$$$k-f$C
+		///                    f8$$$$$$2!$T
+		///                   ,FU$$$$$$b!$`
+		///                   ``D$$$85CF"d-
+		///                    `8Uv,      :-
+		///</code>
+		///		</para>
+		///	</para>
+		///</summary>
+		///<remarks>
+		///	<para>For details on Themed Icons and their use, see Remarks on the outer class.</para>
+		///</remarks>
+		///<example>
+		///	<code>&lt;Image Source="{icons:ThemedIcon myres:TuhopunThemedIconsThemedIcons+VerifyRerun}" /&gt;        &lt;!-- XAML --&gt;</code>
+		///</example>
+		///<example>
+		///	<code>[Item(Name="Sample", Icon=typeof(TuhopunThemedIconsThemedIcons.VerifyRerun))]        // C# Type attribute</code>
+		///</example>
+		///<example>
+		///	<code>IconId iconid = TuhopunThemedIconsThemedIcons.VerifyRerun.Id;        // IconId identifier object</code>
+		///</example>
+		///<example>
+		///	<code>themediconmanager.GetIcon&lt;TuhopunThemedIconsThemedIcons.VerifyRerun&gt;()        // Icon image for rendering</code>
+		///</example>
+		[global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsAttribute()]
+		public sealed class VerifyRerun : global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsClass
+		{
+
+			/// <inheritdoc cref="VerifyRerun">identifier class</inheritdoc>
+			public static global::JetBrains.UI.Icons.IconId Id = new global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsId(typeof(VerifyRerun));
+
+			/// <summary>Loads the image for Themed Icon VerifyRerun theme aspect Color.</summary>
+			public global::JetBrains.Util.Icons.TiImage Load_Color()
+			{
+				return global::JetBrains.Util.Icons.TiImageConverter.FromTiSvg("<svg ti:v=\'1\' width=\'16\' height=\'16\' viewBox=\'0,0,16,16\' xmlns=\'http://www.w3.org" +
+						"/2000/svg\' xmlns:ti=\'urn:schemas-jetbrains-com:tisvg\'><g><path fill-rule=\'evenod" +
+						"d\' d=\'M8.6835,5.8812C9.37468,6.4793899999999995,9.37468,7.5513999999999992,8.683" +
+						"5,8.1496L3.4847,12.6489C2.5131300000000003,13.489799999999999,1.0031000000000003" +
+						",12.7996,1.0031000000000003,11.5147L1.0031000000000003,2.516C1.0031000000000003," +
+						"1.2311,2.5131000000000006,0.54089999999999994,3.4847,1.3818L8.6835,5.8811ZM8.683" +
+						"5,5.8812M8.02909,7.3934999999999995C8.25948,7.1941,8.25948,6.8367499999999994,8." +
+						"02909,6.6373599999999993L2.8302899999999998,2.1380599999999994C2.50643,1.8577799" +
+						"999999995,2.0030799999999997,2.0878299999999994,2.0030799999999997,2.51612999999" +
+						"99995L2.0030799999999997,11.51483C2.0030799999999997,11.94313,2.50643,12.17313,2" +
+						".8302899999999998,11.89293L8.02909,7.39353ZM8.02909,7.3934999999999995\' fill=\'#5" +
+						"7965C\'/><path d=\'M6.8203,1.002C6.6884291809201217,1.011207511981856,6.5654467330" +
+						"695292,1.0723461238565568,6.4784999999999995,1.1719200000000005C6.42070119793725" +
+						"35,1.23833161844587,6.3814556740011659,1.3188458899220457,6.3647485775409178,1.4" +
+						"052870694162902C6.34804148108067,1.4917282489105348,6.35445812587209,1.581067969" +
+						"8076706,6.3833469398312852,1.6642343152396974C6.4122357537904806,1.7474006606717" +
+						"243,6.4625846507768179,1.8214799940422164,6.5292809999999983,1.878950000000001L1" +
+						"2.029280999999997,6.636750000000001C12.266560999999998,6.8421000000000012,12.266" +
+						"560999999998,7.1872600000000011,12.029280999999997,7.3926100000000012L6.56638099" +
+						"99999971,12.121110000000002C6.4996846507768167,12.178580005957786,6.449335753790" +
+						"4785,12.252659339328279,6.4204469398312831,12.335825684760305C6.3915581258720877" +
+						",12.418992030192332,6.3851414810806686,12.508331751089468,6.4018485775409166,12." +
+						"594772930583712C6.4185556740011647,12.681214110077956,6.4578011979372523,12.7617" +
+						"28381554132,6.5155999999999983,12.828140000000001C6.6023532163346577,12.92830157" +
+						"6263422,6.7254613118760229,12.98997966569911,6.8576273351999371,12.9994982886417" +
+						"39C6.9897933585238512,13.009016911584368,7.12046923599027,12.9656163936999,7.220" +
+						"679999999998,12.87892L12.68358,8.15042C13.367899999999999,7.5581900000000006,13." +
+						"367899999999999,6.4731200000000007,12.68358,5.8809200000000006L7.183579999999999" +
+						"2,1.1211200000000003C7.0830889459399646,1.0348835967222769,6.9523441931442393,0." +
+						"99200501863352275,6.8203,1.0019800000000008ZM6.8203,1.002\' fill=\'#57965C\'/><path" +
+						" d=\'M15.906653249999998,15.342573704C15.251136276,15.242502677,14.85101139,15.08" +
+						"5589396,14.429630367,14.552593751C14.309895423,14.346958537999999,14.27550347099" +
+						"9999,14.132406892999999,14.257989051,13.968806288C14.178855717,13.233837536,14.4" +
+						"10046061,12.484698026,14.326693343999999,11.804740475C14.229169869,11.010779972," +
+						"13.646417349,10.351919336,13.021391387999998,9.950043008C12.254896679999998,9.45" +
+						"7171307,11.274089159999999,9.431775398,10.391362391999998,9.469670234C10.1660632" +
+						"61999998,9.479541998,9.9534222809999982,9.578737304,9.7359250289999988,9.6206923" +
+						"01C9.6511393139999981,9.637012556,9.3136682849999985,9.758021276,9.2432125499999" +
+						"991,9.70977701L8.4874653269999989,8.4044750539999988C9.665071239,7.90897619,11.5" +
+						"70401301999999,7.777060763,12.849829683,8.301538031C14.104976708999999,8.8159843" +
+						"13,15.196045463999999,9.88571732,15.322786176,11.152248719C15.34858014,11.410586" +
+						"413999999,15.350650025999999,11.739220622,15.322786176,12.079557646999998C15.238" +
+						"796570999998,13.101046388,14.450488449,14.271646531999998,15.253922661,14.861723" +
+						"263999998C15.435993018,14.995628965999998,15.992314686,15.060671152999998,15.906" +
+						"653249999998,15.342573704ZM15.906653249999998,15.342573704\' fill=\'#1A1A1A\'/><pat" +
+						"h d=\'M14.154733583999999,14.587065314C13.660269663,14.560316018,13.1510777069999" +
+						"99,14.507454314,12.780806945999998,14.587065314C12.558134979,14.634911525,12.311" +
+						"181656999999,14.823271151,12.094002848999999,14.964660287000001C11.470091442,15." +
+						"371631719,10.875078828,15.884326558999998,9.895783917,15.9266C10.031520672,15.21" +
+						"7186379,10.056677748,14.144268932,9.964488209999999,13.28192258C10.1654263739999" +
+						"99,13.127795683999999,10.540792239,13.148016878,10.685684258999999,12.938401115C" +
+						"10.547559174,12.528484076,10.028097399,12.932669123,9.792767283,13.0414973600000" +
+						"01C9.702249576,13.356597698,9.6875215409999988,13.680057191,9.72406299,13.968806" +
+						"288C9.5486003459999989,13.999376911999999,9.428148903,14.084879126,9.24321254999" +
+						"99991,14.106294485C9.239709666,13.452210509,9.48045333,12.864999773000001,9.6896" +
+						"71038,12.285750137C9.887026707,11.739220622000001,10.093935695999999,11.29021458" +
+						"2,10.411026309,11.083544426C10.937812296,10.724578427,12.038275149,10.617501632," +
+						"12.677949534,10.843198817000001C13.085955908999999,10.986976283,13.471273149,11." +
+						"398565153,13.639809635999999,11.736195404C14.01668811,12.492499904,13.6054176839" +
+						"99999,13.895803001,14.154733584,14.587065314ZM14.154733583999999,14.587065314\' f" +
+						"ill=\'#1A1A1A\'/><path d=\'M10.463888012999998,10.730708474C10.457280299999999,10.7" +
+						"35803577999999,10.448921145,10.739386073,10.438651325999999,10.741296736999999C1" +
+						"0.353945222,10.756980104,10.239146159999999,10.615431745999999,10.178323356,10.5" +
+						"70690364C10.057314636,10.481685266,9.9363855269999988,10.392759779,9.815456418,1" +
+						"0.303754681C9.670644009,10.197155552,9.5258316,10.090636034,9.38093958,9.9840369" +
+						"05C9.38093958,9.984036905,9.8281941779999986,9.751015508,10.170521478,9.74385051" +
+						"8C10.245833483999998,9.96293999,10.321225101,10.182109073,10.396537106999999,10." +
+						"401278156C10.41986313,10.468947506,10.532592306,10.678005992,10.463888012999998," +
+						"10.730708474ZM10.463888012999998,10.730708474\' fill=\'#1A1A1A\'/><path d=\'M10.7200" +
+						"76210999999,10.671398279L10.479810212999999,9.6771365C10.479810212999999,9.67713" +
+						"65,10.697785131,9.637649444,10.857484797,9.640833884L10.911381444,10.61256575ZM1" +
+						"0.720076210999999,10.671398279\' fill=\'#1A1A1A\'/><path d=\'M11.084694590999998,10." +
+						"557952604L11.132222358,9.640833884L11.441511092999999,9.640833884L11.26310284199" +
+						"9999,10.557952604ZM11.084694590999998,10.557952604\' fill=\'#1A1A1A\'/><path d=\'M11" +
+						".475823433999999,10.533989692999999L11.681936313,9.7439301289999989L11.922202311" +
+						",9.778481303L11.627562,10.557952604ZM11.475823433999999,10.533989692999999\' fill" +
+						"=\'#1A1A1A\'/><path d=\'M11.917186818,10.533989692999999L12.125847249,9.809848037L1" +
+						"2.33450768,9.915730667L11.992419213,10.557952604ZM11.917186818,10.53398969299999" +
+						"9\' fill=\'#1A1A1A\'/><path d=\'M12.265803387,10.568381644999999L12.540620559,9.9843" +
+						"55349L12.712261875,10.053059642L12.33450768,10.568381644999999ZM12.265803387,10." +
+						"568381644999999\' fill=\'#1A1A1A\'/><path d=\'M12.60916563,10.671398279L12.883903190" +
+						"999998,10.156235498L13.021391387999998,10.224939790999999L12.669192323999999,10." +
+						"676334161ZM12.60916563,10.671398279\' fill=\'#1A1A1A\'/><path d=\'M12.88390319099999" +
+						"8,10.778395462999999L13.153466037,10.293564473L13.296128949,10.396660718L12.9212" +
+						"40749999999,10.81159325ZM12.883903190999998,10.778395462999999\' fill=\'#1A1A1A\'/>" +
+						"<path d=\'M13.090016069999999,10.860235571L13.433617146,10.499677351999999L13.467" +
+						"929487,10.605958036999999ZM13.090016069999999,10.860235571\' fill=\'#1A1A1A\'/><pat" +
+						"h d=\'M13.261896219,11.03211572L13.571025731999999,10.740022961000001L13.65103478" +
+						"7,10.81159325ZM13.261896219,11.03211572\' fill=\'#1A1A1A\'/><path d=\'M13.433617146," +
+						"11.117856767L13.717111917,10.886029534999999L13.750548537,11.001943150999999ZM13" +
+						".433617146,11.117856767\' fill=\'#1A1A1A\'/><path d=\'M13.575404336999998,11.2552653" +
+						"52999999L13.780163829,11.203757035999999L13.780163829,11.229471389L13.592043036," +
+						"11.28925925ZM13.575404336999998,11.255265352999999\' fill=\'#1A1A1A\'/></g></svg>");
+			}
+
+			/// <summary>Loads the image for Themed Icon VerifyRerun theme aspect GrayDark.</summary>
+			public global::JetBrains.Util.Icons.TiImage Load_GrayDark()
+			{
+				return global::JetBrains.Util.Icons.TiImageConverter.FromTiSvg("<svg ti:v=\'1\' width=\'16\' height=\'16\' viewBox=\'0,0,16,16\' xmlns=\'http://www.w3.org" +
+						"/2000/svg\' xmlns:ti=\'urn:schemas-jetbrains-com:tisvg\'><g><path fill-rule=\'evenod" +
+						"d\' d=\'M8.6835,5.8812C9.37468,6.4793899999999995,9.37468,7.5513999999999992,8.683" +
+						"5,8.1496L3.4847,12.6489C2.5131300000000003,13.489799999999999,1.0031000000000003" +
+						",12.7996,1.0031000000000003,11.5147L1.0031000000000003,2.516C1.0031000000000003," +
+						"1.2311,2.5131000000000006,0.54089999999999994,3.4847,1.3818L8.6835,5.8811ZM8.683" +
+						"5,5.8812M8.02909,7.3934999999999995C8.25948,7.1941,8.25948,6.8367499999999994,8." +
+						"02909,6.6373599999999993L2.8302899999999998,2.1380599999999994C2.50643,1.8577799" +
+						"999999995,2.0030799999999997,2.0878299999999994,2.0030799999999997,2.51612999999" +
+						"99995L2.0030799999999997,11.51483C2.0030799999999997,11.94313,2.50643,12.17313,2" +
+						".8302899999999998,11.89293L8.02909,7.39353ZM8.02909,7.3934999999999995\' fill=\'#5" +
+						"7965C\'/><path d=\'M6.8203,1.002C6.6884291809201217,1.011207511981856,6.5654467330" +
+						"695292,1.0723461238565568,6.4784999999999995,1.1719200000000005C6.42070119793725" +
+						"35,1.23833161844587,6.3814556740011659,1.3188458899220457,6.3647485775409178,1.4" +
+						"052870694162902C6.34804148108067,1.4917282489105348,6.35445812587209,1.581067969" +
+						"8076706,6.3833469398312852,1.6642343152396974C6.4122357537904806,1.7474006606717" +
+						"243,6.4625846507768179,1.8214799940422164,6.5292809999999983,1.878950000000001L1" +
+						"2.029280999999997,6.636750000000001C12.266560999999998,6.8421000000000012,12.266" +
+						"560999999998,7.1872600000000011,12.029280999999997,7.3926100000000012L6.56638099" +
+						"99999971,12.121110000000002C6.4996846507768167,12.178580005957786,6.449335753790" +
+						"4785,12.252659339328279,6.4204469398312831,12.335825684760305C6.3915581258720877" +
+						",12.418992030192332,6.3851414810806686,12.508331751089468,6.4018485775409166,12." +
+						"594772930583712C6.4185556740011647,12.681214110077956,6.4578011979372523,12.7617" +
+						"28381554132,6.5155999999999983,12.828140000000001C6.6023532163346577,12.92830157" +
+						"6263422,6.7254613118760229,12.98997966569911,6.8576273351999371,12.9994982886417" +
+						"39C6.9897933585238512,13.009016911584368,7.12046923599027,12.9656163936999,7.220" +
+						"679999999998,12.87892L12.68358,8.15042C13.367899999999999,7.5581900000000006,13." +
+						"367899999999999,6.4731200000000007,12.68358,5.8809200000000006L7.183579999999999" +
+						"2,1.1211200000000003C7.0830889459399646,1.0348835967222769,6.9523441931442393,0." +
+						"99200501863352275,6.8203,1.0019800000000008ZM6.8203,1.002\' fill=\'#57965C\'/><path" +
+						" d=\'M15.906653249999998,15.342573704C15.251136276,15.242502677,14.85101139,15.08" +
+						"5589396,14.429630367,14.552593751C14.309895423,14.346958537999999,14.27550347099" +
+						"9999,14.132406892999999,14.257989051,13.968806288C14.178855717,13.233837536,14.4" +
+						"10046061,12.484698026,14.326693343999999,11.804740475C14.229169869,11.010779972," +
+						"13.646417349,10.351919336,13.021391387999998,9.950043008C12.254896679999998,9.45" +
+						"7171307,11.274089159999999,9.431775398,10.391362391999998,9.469670234C10.1660632" +
+						"61999998,9.479541998,9.9534222809999982,9.578737304,9.7359250289999988,9.6206923" +
+						"01C9.6511393139999981,9.637012556,9.3136682849999985,9.758021276,9.2432125499999" +
+						"991,9.70977701L8.4874653269999989,8.4044750539999988C9.665071239,7.90897619,11.5" +
+						"70401301999999,7.777060763,12.849829683,8.301538031C14.104976708999999,8.8159843" +
+						"13,15.196045463999999,9.88571732,15.322786176,11.152248719C15.34858014,11.410586" +
+						"413999999,15.350650025999999,11.739220622,15.322786176,12.079557646999998C15.238" +
+						"796570999998,13.101046388,14.450488449,14.271646531999998,15.253922661,14.861723" +
+						"263999998C15.435993018,14.995628965999998,15.992314686,15.060671152999998,15.906" +
+						"653249999998,15.342573704ZM15.906653249999998,15.342573704\' fill=\'#C4C4C4\'/><pat" +
+						"h d=\'M14.154733583999999,14.587065314C13.660269663,14.560316018,13.1510777069999" +
+						"99,14.507454314,12.780806945999998,14.587065314C12.558134979,14.634911525,12.311" +
+						"181656999999,14.823271151,12.094002848999999,14.964660287000001C11.470091442,15." +
+						"371631719,10.875078828,15.884326558999998,9.895783917,15.9266C10.031520672,15.21" +
+						"7186379,10.056677748,14.144268932,9.964488209999999,13.28192258C10.1654263739999" +
+						"99,13.127795683999999,10.540792239,13.148016878,10.685684258999999,12.938401115C" +
+						"10.547559174,12.528484076,10.028097399,12.932669123,9.792767283,13.0414973600000" +
+						"01C9.702249576,13.356597698,9.6875215409999988,13.680057191,9.72406299,13.968806" +
+						"288C9.5486003459999989,13.999376911999999,9.428148903,14.084879126,9.24321254999" +
+						"99991,14.106294485C9.239709666,13.452210509,9.48045333,12.864999773000001,9.6896" +
+						"71038,12.285750137C9.887026707,11.739220622000001,10.093935695999999,11.29021458" +
+						"2,10.411026309,11.083544426C10.937812296,10.724578427,12.038275149,10.617501632," +
+						"12.677949534,10.843198817000001C13.085955908999999,10.986976283,13.471273149,11." +
+						"398565153,13.639809635999999,11.736195404C14.01668811,12.492499904,13.6054176839" +
+						"99999,13.895803001,14.154733584,14.587065314ZM14.154733583999999,14.587065314\' f" +
+						"ill=\'#C4C4C4\'/><path d=\'M10.463888012999998,10.730708474C10.457280299999999,10.7" +
+						"35803577999999,10.448921145,10.739386073,10.438651325999999,10.741296736999999C1" +
+						"0.353945222,10.756980104,10.239146159999999,10.615431745999999,10.178323356,10.5" +
+						"70690364C10.057314636,10.481685266,9.9363855269999988,10.392759779,9.815456418,1" +
+						"0.303754681C9.670644009,10.197155552,9.5258316,10.090636034,9.38093958,9.9840369" +
+						"05C9.38093958,9.984036905,9.8281941779999986,9.751015508,10.170521478,9.74385051" +
+						"8C10.245833483999998,9.96293999,10.321225101,10.182109073,10.396537106999999,10." +
+						"401278156C10.41986313,10.468947506,10.532592306,10.678005992,10.463888012999998," +
+						"10.730708474ZM10.463888012999998,10.730708474\' fill=\'#C4C4C4\'/><path d=\'M10.7200" +
+						"76210999999,10.671398279L10.479810212999999,9.6771365C10.479810212999999,9.67713" +
+						"65,10.697785131,9.637649444,10.857484797,9.640833884L10.911381444,10.61256575ZM1" +
+						"0.720076210999999,10.671398279\' fill=\'#C4C4C4\'/><path d=\'M11.084694590999998,10." +
+						"557952604L11.132222358,9.640833884L11.441511092999999,9.640833884L11.26310284199" +
+						"9999,10.557952604ZM11.084694590999998,10.557952604\' fill=\'#C4C4C4\'/><path d=\'M11" +
+						".475823433999999,10.533989692999999L11.681936313,9.7439301289999989L11.922202311" +
+						",9.778481303L11.627562,10.557952604ZM11.475823433999999,10.533989692999999\' fill" +
+						"=\'#C4C4C4\'/><path d=\'M11.917186818,10.533989692999999L12.125847249,9.809848037L1" +
+						"2.33450768,9.915730667L11.992419213,10.557952604ZM11.917186818,10.53398969299999" +
+						"9\' fill=\'#C4C4C4\'/><path d=\'M12.265803387,10.568381644999999L12.540620559,9.9843" +
+						"55349L12.712261875,10.053059642L12.33450768,10.568381644999999ZM12.265803387,10." +
+						"568381644999999\' fill=\'#C4C4C4\'/><path d=\'M12.60916563,10.671398279L12.883903190" +
+						"999998,10.156235498L13.021391387999998,10.224939790999999L12.669192323999999,10." +
+						"676334161ZM12.60916563,10.671398279\' fill=\'#C4C4C4\'/><path d=\'M12.88390319099999" +
+						"8,10.778395462999999L13.153466037,10.293564473L13.296128949,10.396660718L12.9212" +
+						"40749999999,10.81159325ZM12.883903190999998,10.778395462999999\' fill=\'#C4C4C4\'/>" +
+						"<path d=\'M13.090016069999999,10.860235571L13.433617146,10.499677351999999L13.467" +
+						"929487,10.605958036999999ZM13.090016069999999,10.860235571\' fill=\'#C4C4C4\'/><pat" +
+						"h d=\'M13.261896219,11.03211572L13.571025731999999,10.740022961000001L13.65103478" +
+						"7,10.81159325ZM13.261896219,11.03211572\' fill=\'#C4C4C4\'/><path d=\'M13.433617146," +
+						"11.117856767L13.717111917,10.886029534999999L13.750548537,11.001943150999999ZM13" +
+						".433617146,11.117856767\' fill=\'#C4C4C4\'/><path d=\'M13.575404336999998,11.2552653" +
+						"52999999L13.780163829,11.203757035999999L13.780163829,11.229471389L13.592043036," +
+						"11.28925925ZM13.575404336999998,11.255265352999999\' fill=\'#C4C4C4\'/></g></svg>");
+			}
+
+			/// <summary>Returns the set of theme images for Themed Icon VerifyRerun.</summary>
 			public override global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsIdOwner.ThemedIconThemeImage[] GetThemeImages()
 			{
 				return new global::JetBrains.Application.Icons.CompiledIconsCs.CompiledIconCsIdOwner.ThemedIconThemeImage[] {
