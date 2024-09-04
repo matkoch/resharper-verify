@@ -10,7 +10,9 @@
 ## Features
 
 - _Accept Received_ action in test context menu to accept the last received snapshot data (test is marked as outdated)
+- _Accept Received + Re-run tests_ same as above, plus automatic re-run of tests
 - _Compare Received/Verified_ action in test context menu to compare last received and verified snapshot with the preferred [diff engine](https://github.com/VerifyTests/DiffEngine#supported-tools)
+- _Open Verified_ action in test context menu to open verified files
 - Actions support multi-selection
 
 ![Verify Support features](doc/features.gif)
