@@ -29,6 +29,7 @@
     <PackageReference Include="DiffEngine" Version="11.3.0" PrivateAssets="all" />
     <PackageReference Include="EmptyFiles" Version="4.4.0" PrivateAssets="all" />
     <PackageReference Include="Verify.ExceptionParsing" Version="20.3.2" PrivateAssets="all" />
+    <PackageReference Include="System.Management" Version="6.0.1" PrivateAssets="all" />
     <PackageReference Include="System.Memory" Version="4.5.5" PrivateAssets="all" />
     <PackageReference Include="System.CodeDom" Version="6.0.0" PrivateAssets="all" />
   </ItemGroup>
