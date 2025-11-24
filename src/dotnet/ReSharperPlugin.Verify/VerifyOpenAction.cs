@@ -4,6 +4,7 @@ using JetBrains.Application.UI.Actions;
 using JetBrains.Application.UI.ActionsRevised.Menu;
 using JetBrains.Application.UI.ActionSystem.ActionsRevised.Menu;
 using JetBrains.IDE;
+using JetBrains.IDE.Common;
 using JetBrains.Interop.WinApi;
 using JetBrains.Util;
 #if RESHARPER
