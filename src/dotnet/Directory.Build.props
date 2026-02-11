@@ -24,7 +24,7 @@
 
   <ItemGroup>
     <Reference Include="System.Xaml" />
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="All" />
 
     <PackageReference Include="DiffEngine" Version="17.0.1" PrivateAssets="all" />
     <PackageReference Include="EmptyFiles" Version="8.17.1" PrivateAssets="all" />
